@@ -11,6 +11,8 @@ export class LugarService {
 
   constructor(private http: HttpClient) {}
 
+
+  
   getLugares(): Observable<Lugar[]> {
     return this.http.get<Lugar[]>(this.apiUrl);
   }
