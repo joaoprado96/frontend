@@ -1986,13 +1986,35 @@ h5 {
     z-index: 1000; /* Z-index alto para sobrepor outros elementos */
   }
 
-  #loader-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 
+  .loader-overlay {
+    position: fixed; /* Posicionamento fixo para cobrir toda a tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que o loader fique acima de outros conteúdos */
+  }
+  
+  .loader {
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Cor mais clara para o loader */
+    border-top: 5px solid #ffffff; /* Cor branca para a parte superior do spinner */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
   .mensagem-vazia {
     text-align: center;
     padding: 20px;
@@ -2367,35 +2389,48 @@ h5 {
     opacity: 1; /* Necessário para garantir a visibilidade em alguns navegadores */
 }
 
-/* Estilo para o modal */
-.modal {
-    display: none; /* Por padrão, o modal está oculto */
-    position: fixed; /* O modal é fixo na tela */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto com transparência */
-    z-index: 1; /* O modal fica sobreposto a outros elementos */
-  }
-  
-  /* Conteúdo do modal */
-  .modal-content {
-    background-color: #fff; /* Cor de fundo do conteúdo */
-    margin: 20% auto; /* Centraliza verticalmente e centraliza horizontalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%; /* Largura do conteúdo do modal */
-    max-width: 400px; /* Largura máxima */
-    position: relative;
-  }
-  
-  /* Estilo para o botão de fechar o modal */
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  z-index: 100;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-content p {
+  color: #666;
+}
+
+.modal-content button {
+  background-color: var(--primaria);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: var(--secundaria);
+}
