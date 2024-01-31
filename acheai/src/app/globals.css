@@ -2165,8 +2165,8 @@ h5 {
     background-repeat: no-repeat;
     background-position: center; /* Centraliza a imagem de fundo */
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: flex-end;
+    align-items: flex-end;
     width: 100%; /* Define a largura como 100% da viewport */
     height: 100%; /* Define a altura como 100% da viewport */
     margin: 0;
@@ -2178,8 +2178,8 @@ h5 {
         background-repeat: no-repeat;
         background-position: center; /* Centraliza a imagem de fundo */
         display: flex;
-        justify-content: end;
-        align-items: end;
+        justify-content: flex-end;
+        align-items: flex-end;
         width: 100%; /* Define a largura como 100% da viewport */
         height: 100%; /* Define a altura como 100% da viewport */
         margin: 0;
