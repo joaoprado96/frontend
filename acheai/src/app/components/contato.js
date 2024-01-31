@@ -42,21 +42,22 @@ export default function Contato() {
 
           <br />
           <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo? Conta tudo! Adoramos ouvir o que você tem a dizer. 😊</p>
+          
+            <div className="contact-icons">
+                <a href="https://exemplo-whatsapp.com" className="icon-container2">
+                    <img src="https://exemplo-site.com/whatsapp-icon.png" alt="WhatsApp" />
+                    <span>Chama no Zap! 📱 (11) 9999-9999</span>
+                </a>
+                <a href="https://exemplo-instagram.com" className="icon-container2">
+                    <img src="https://exemplo-site.com/instagram-icon.png" alt="Instagram" />
+                    <span>Segue a gente! 📸 @ache.ai</span>
+                </a>
+                <a href="mailto:exemplo-email@example.com" className="icon-container2">
+                    <img src="https://exemplo-site.com/email-icon.png" alt="Email" />
+                    <span>Manda um e-mail! 📧 contato@acheai.app.br</span>
+                </a>
+            </div>
 
-          <div className="contact-icons">
-            <a href="link-do-whatsapp" className="icon-container2">
-              <img src="icons/icon-whatsapp.png" alt="WhatsApp" />
-              <span>Chama no Zap! 📱 (11) 9999-9999</span>
-            </a>
-            <a href="link-do-instagram" className="icon-container2">
-              <img src="icons/icon-instagram.png" alt="Instagram" />
-              <span>Segue a gente! 📸 @ache.ai</span>
-            </a>
-            <a href="mailto:seuemail@example.com" className="icon-container2">
-              <img src="icons/icon-email.PNG" alt="Email" />
-              <span>Manda um e-mail! 📧 contato@acheai.app.br</span>
-            </a>
-          </div>
           <p style={{ marginTop: '20px', textAlign: 'justify' }}>
             🕒 Respondemos rapidinho! Todas as suas mensagens serão atendidas em até 6 horas. E ei, você aí que tá cheio de ideias e energia, sabia que estamos de braços abertos para novos parceiros? Se você acha que pode contribuir com o nosso projeto de alguma forma incrível, não deixe de entrar em contato. Vamos juntos fazer algo sensacional! 🚀
           </p>
