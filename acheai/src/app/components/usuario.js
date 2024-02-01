@@ -29,7 +29,7 @@ export default function Usuario() {
         // Aqui você pode adicionar validações antes de enviar
 
         try {
-            const response = await fetch('/api/register', {
+            const response = await fetch('https://application-backend.onrender.com/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
