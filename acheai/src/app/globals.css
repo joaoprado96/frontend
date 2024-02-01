@@ -40,7 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     min-height: 90vh;
     width: 100%;
 }
@@ -403,7 +403,7 @@ ul {
     /* Adiciona rolagem horizontal */
     -webkit-overflow-scrolling: touch;
     /* Melhora a rolagem em dispositivos iOS */
-    justify-content: space-around;
+    justify-content: flex-end;
     /* Distribui os itens uniformemente */
     white-space: nowrap;
     /* Evita que os itens da aba quebrem para a linha seguinte */
@@ -637,7 +637,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     /* Permite que os itens se ajustem na linha ou se movam para a próxima */
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 
 .btn-insta-whats{
@@ -661,7 +661,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     /* Permite que os itens se ajustem na linha ou se movam para a próxima */
-    justify-content: space-around;
+    justify-content: flex-end;
     /* Espaçamento entre os itens */
     background-color: #ffffff;
     margin-top: 10px;
@@ -672,7 +672,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     /* Permite que os itens se ajustem na linha ou se movam para a próxima */
-    justify-content: space-around;
+    justify-content: flex-end;
     /* Espaçamento entre os itens */
     background-color: #189200;
 }
