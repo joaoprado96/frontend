@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Modal from 'react-modal';
 
+Modal.setAppElement('#__next');
 export default function Usuario() {
     const [formData, setFormData] = useState({
         nome: '',
@@ -15,6 +17,9 @@ export default function Usuario() {
         termos: false
     });
     const [notification, setNotification] = useState({ message: '', type: '' });
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -26,7 +31,7 @@ export default function Usuario() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aqui você pode adicionar validações antes de enviar
+        setIsLoading(true); // Ativa o loader
 
         try {
             const response = await fetch('https://application-backend.onrender.com/api/register', {
@@ -36,10 +41,11 @@ export default function Usuario() {
             });
 
             if(response.ok) {
+                setIsLoading(false); // Desativa o loader
                 setNotification({ message: 'Cadastro efetuado com sucesso, redirecionando...', type: 'success' });
                 setTimeout(() => {
                     window.location.href = '/login';
-                }, 4500);
+                }, 2500);
             } else {
                 setNotification({ message: 'Falha no registro. Tente novamente.', type: 'error' });
             }
@@ -47,6 +53,9 @@ export default function Usuario() {
             setNotification({ message: 'Erro no servidor. Tente novamente.', type: 'error' });
         }
     };
+    const closeModal = () => {
+        setModalIsOpen(false);
+      };
 
     return (
         <>
@@ -100,7 +109,23 @@ export default function Usuario() {
                         <input type="submit" value="Registrar" className="btn" />
                     </div>
                 </form>
+                {isLoading && (
+                <div className="loader-overlay">
+                <div className="loader"></div>
+                </div>
+            )}
             </div>
+            <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Feedback Modal"
+            className="modal-content"
+            overlayClassName="modal-overlay"
+            >
+            <h2>Feedback</h2>
+            <p>{modalMessage}</p>
+            <button onClick={closeModal}>Fechar</button>
+        </Modal>
         </>
     );
 }
