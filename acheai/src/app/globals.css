@@ -45,6 +45,20 @@ body {
     width: 100%;
 }
 
+.pagecontato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 90vh;
+    width: 100%;
+    background-color: #663A84;
+    /*background-image: url('/image/back-3.png'); /* Substitua o caminho pela localização real da sua imagem */
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem no elemento */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+  }
+
 .pagedetalhes {
     display: flex;
     flex-direction: row;
@@ -885,6 +899,7 @@ select:focus {
 .btn:hover {
     transform: scale(1.05);
     background-color: var(--secundaria);
+    border: none;
 }
 
 /* Media Queries */
@@ -958,17 +973,25 @@ select:focus {
 .formulario-cadastro p,
 .formulario-cadastro label,
 .formulario-cadastro a {
-    font-size: 14px;
+    color: #540075;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
 }
 
 .formulario-cadastro input,
 .formulario-cadastro textarea,
 .formulario-cadastro select {
     width: 100%;
+    height: 47px;
+    background-color: rgba(240, 240, 240, 0.892);
+    border-radius: 20px;
+    outline: none;
     padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border 0.3s;
+    font-size: 15px;
+    color: #616161;
+    transition: all 0.4s ease;
+    border: none;
 }
 
 .select2-container--default .select2-selection--single {
@@ -989,7 +1012,7 @@ select:focus {
 .formulario-cadastro input:focus,
 .formulario-cadastro textarea:focus,
 .formulario-cadastro select:focus {
-    border-color: var(--secundaria);
+    border-color: var(--primaria);
 }
 
 .formulario-grupo {
@@ -1097,6 +1120,17 @@ select:focus {
     margin-top: var(--navbar-height);
     padding: 20px;
     justify-content: center;
+}
+
+.container-side-contato {
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    margin-top: var(--navbar-height);
+    padding: 20px;
+    height: 500px;
+    justify-content: center;
+    color: rgb(0, 0, 0);
 }
 
 .quem-somos {
@@ -1678,6 +1712,18 @@ select:focus {
     /* Altura completa do card */
 }
 
+.card-contato {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background-color: #ffffff;
+}
+
 .card-content img {
     width: 100%;
     /* A imagem ocupa toda a largura do card */
@@ -1856,6 +1902,7 @@ select:focus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 20px;
 }
 
 .icon-container2 {
@@ -1865,7 +1912,7 @@ select:focus {
 }
 
 .icon-container2 img {
-    width: 24px;
+    width: 35px;
     /* ou qualquer tamanho que desejar */
     height: auto;
     margin-right: 8px;
@@ -2316,6 +2363,8 @@ h5 {
  /*   animation: realcarTexto 3s infinite alternate;*/
 }
 
+
+
 /* Keyframes para animação */
 /*@keyframes realcarTexto {
     0% { transform: scale(1); }
@@ -2439,3 +2488,60 @@ h5 {
   justify-content: center;
   align-items: center;
 }
+
+.container-testando {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .text-section {
+    flex-basis: calc(60% - 20px);
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-right: 80px;
+  }
+
+  .text-section p {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .text-section p span{
+    font-weight: bold;
+    color: #4a0087;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .text-section p span:hover{
+    color:var(--secundaria)
+  }
+
+
+  .text-section h2 {
+    font-size: 60px;
+    color:var(--standard2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'League Spartan', sans-serif; /* Fonte moderna */
+    padding: 0px; /* Espaçamento interno para separar o texto das bordas */
+    border-radius: 10px; /* Bordas arredondadas para um visual moderno */
+    line-height: 1.2;
+}
+
+.text-section h2 span {
+    display: block; /* Cada parte do texto em um bloco separado */
+    font-family: 'League Spartan', sans-serif; /* Fonte moderna */
+    font-size: 110%; /* Tamanho da fonte para a segunda linha (ajuste conforme necessário) */
+  }
+
+  .form-section{
+    flex-basis: calc(40% - 20px);
+    margin-bottom: 20px;
+    padding: 40px;
+  }
