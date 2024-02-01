@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import Modal from 'react-modal';
 
@@ -42,6 +43,14 @@ export default function Contato() {
   };
 
   return (
+  <>
+    <Head>
+        <title>AcheAi</title>
+        <link rel="icon" type="image/png" href="/icons/logo.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    </Head>
     <div className="page">
       <div className="container-side">
         <div className="container2">
@@ -98,5 +107,6 @@ export default function Contato() {
         <button onClick={closeModal}>Fechar</button>
       </Modal>
     </div>
+</>
   );
 }

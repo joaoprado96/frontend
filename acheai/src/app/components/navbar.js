@@ -6,14 +6,16 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
+  const toggleSubmenu = (open) => {
+    setIsSubmenuOpen(open);
+  };
+
   return (
     <nav className={`nav ${isNavOpen ? 'openNav' : ''} ${isSearchOpen ? 'openSearch' : ''}`}>
       <i className={`uil uil-bars navOpenBtn ${isNavOpen ? 'hidden' : ''}`} onClick={() => setIsNavOpen(true)}></i>
       {/* Use o componente Link para navegação interna */}
       <Link href="/home">
-        <p className="logo">
-          <img src="icons/logo.png" alt="Logo" style={{ height: '40px' }} />
-        </p>
+          <img className="logo" src="icons/logo.png" alt="Logo" style={{ height: '40px' }} />
       </Link>
 
       <ul className="nav-links">
@@ -30,14 +32,16 @@ export default function Navbar() {
         <input type="text" placeholder="Search here..." style={{ pointerEvents: isSearchOpen ? 'auto' : 'none' }} />
       </div>
 
-      <div className="user-icon-container">
-        <img src="icons/icon-usuario.png" alt="Usuário" className="user-icon" onMouseEnter={() => setIsSubmenuOpen(true)} onMouseLeave={() => setIsSubmenuOpen(false)} />
+      <div className="user-icon-container" 
+           onMouseEnter={() => toggleSubmenu(true)} 
+           onMouseLeave={() => toggleSubmenu(false)}>
+        <img src="icons/icon-usuario.png" alt="Usuário" className="user-icon" />
         <div className={`user-submenu ${isSubmenuOpen ? 'show' : ''}`}>
-          <Link href="/login"><p>Login</p></Link>
-          <Link href="/usuario"><p>Usuário</p></Link>
-          <Link href="/cadastro"><p>Cadastrar</p></Link>
-          <Link href="/editar_estabelecimento"><p>Atualizar</p></Link>
-          <Link href="/fotos"><p>Fotos</p></Link>
+          <Link href="/login">Login</Link>
+          <Link href="/usuario">Usuário</Link>
+          <Link href="/cadastro">Cadastrar</Link>
+          <Link href="/editar_estabelecimento">Atualizar</Link>
+          <Link href="/fotos">Fotos</Link>
         </div>
       </div>
     </nav>

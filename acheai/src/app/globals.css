@@ -40,8 +40,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
+    justify-content: end;
+    min-height: 90vh;
     width: 100%;
 }
 
@@ -787,15 +787,13 @@ h4 {
 
 .formLogin {
     background-color: var(--branco);
-    border-radius: 7px;
-    padding: 40px;
-    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 100%;
+    width: 80%;
     max-width: 520px;
-    /* Largura máxima para dispositivos maiores */
     border-color: var(--branco);
     border: 20px;
 }
@@ -914,28 +912,27 @@ select:focus {
     }
 }
 
-.notification-popup,
-.notification-popup-sucesso {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    text-align: center;
-}
-
 .notification-popup {
-    background-color: #f44336;
-    color: var(--branco);
+  /* Estilos básicos para a notificação */
+  position: fixed;
+  bottom: 20px; /* Posiciona 20px acima do fundo da tela */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta a centralização */
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  z-index: 1000;
+  /* mais estilos aqui... */
 }
 
-.notification-popup-sucesso {
-    background-color: #189200;
-    color: var(--branco);
+.notification-popup.success {
+  background-color: green;
 }
+
+.notification-popup.error {
+  background-color: red;
+}
+
 
 
 .formulario-cadastro {
@@ -2433,4 +2430,12 @@ h5 {
 
 .modal-content button:hover {
   background-color: var(--secundaria);
+}
+
+.modal {
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
