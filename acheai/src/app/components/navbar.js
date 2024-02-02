@@ -17,7 +17,13 @@ export default function Navbar() {
       <i className={`uil uil-bars navOpenBtn ${isNavOpen ? 'hidden' : ''}`} onClick={() => setIsNavOpen(true)}></i>
       {/* Use o componente Link para navegação interna */}
       <Link href="/home">
-          <img className="logo" src="icons/logo.png" alt="Logo" style={{ height: '40px' }} />
+            <Image
+                src="/icons/logo.png" // Caminho para a sua imagem
+                alt="Ache Aí" // Texto alternativo para acessibilidade
+                width={60} // Largura da imagem
+                height={40} // Altura da imagem
+                objectFit="contain" // Esta propriedade é opcional, ajusta como a imagem se encaixa na caixa delimitadora
+            />
       </Link>
 
       <ul className="nav-links">

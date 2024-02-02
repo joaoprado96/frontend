@@ -69,7 +69,7 @@ export default function Login() {
             setShowResetPasswordModal(true);
             }}>Esqueci minha senha</a>
 
-          <Link href="/usuario"><a>Quero me cadastrar</a></Link>
+          <Link href="/usuario">Quero me cadastrar</Link>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5px' }}>
             <input type="submit" value="Acessar" className="btn"/>
           </div>
