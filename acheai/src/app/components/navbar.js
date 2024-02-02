@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link'; // Importe o componente Link do Next.js
+import Image from 'next/image';
+
 
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -35,7 +37,7 @@ export default function Navbar() {
       <div className="user-icon-container" 
            onMouseEnter={() => toggleSubmenu(true)} 
            onMouseLeave={() => toggleSubmenu(false)}>
-        <img src="icons/icon-usuario.png" alt="Usuário" className="user-icon" />
+        <Image src="/icons/icon-usuario.png" alt="Usuário" width={40} height={40} className="user-icon" />
         <div className={`user-submenu ${isSubmenuOpen ? 'show' : ''}`}>
           <Link href="/login">Login</Link>
           <Link href="/usuario">Usuário</Link>

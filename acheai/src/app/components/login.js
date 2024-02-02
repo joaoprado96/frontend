@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import styles from '../globals.css';    
+import Link from 'next/link';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -69,7 +69,7 @@ export default function Login() {
             setShowResetPasswordModal(true);
             }}>Esqueci minha senha</a>
 
-          <a href="/usuario">Quero me cadastrar</a>
+          <Link href="/usuario"><a>Quero me cadastrar</a></Link>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5px' }}>
             <input type="submit" value="Acessar" className="btn"/>
           </div>

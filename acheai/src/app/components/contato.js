@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Modal from 'react-modal';
+import Image from 'next/image';
+
 
 // Ajustes iniciais para o modal
 Modal.setAppElement('#__next');
@@ -53,19 +55,19 @@ export default function Contato() {
           <h2 style={{ fontSize: '24px', textAlign: 'center' }}>📢 Oi, Vamos Conversar! 📢</h2>
           <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo? Conta tudo! Adoramos ouvir o que você tem a dizer. 😊</p>
           <div className="contact-icons">
-                <a href="https://exemplo-whatsapp.com" className="icon-container2">
-                    <img src="icons/icon-whatsapp.png" />
-                    <span>Chama no Zap! 📱 (11) 9999-9999</span>
-                </a>
-                <a href="https://exemplo-instagram.com" className="icon-container2">
-                    <img src="icons/icon-instagram.png"/>
-                    <span>Segue a gente! 📸 @ache.ai</span>
-                </a>
-                <a href="mailto:exemplo-email@example.com" className="icon-container2">
-                    <img src="icons/icon-email.png" />
-                    <span>Manda um e-mail! 📧 contato@acheai.app.br</span>
-                </a>
-            </div>
+            <a href="https://exemplo-whatsapp.com" className="icon-container2">
+                <Image src="/icons/icon-whatsapp.png" alt="Chama no Zap" width={50} height={50} />
+                <span>Chama no Zap! 📱 (11) 9999-9999</span>
+            </a>
+            <a href="https://exemplo-instagram.com" className="icon-container2">
+                <Image src="/icons/icon-instagram.png" alt="Segue a gente no Instagram" width={50} height={50} />
+                <span>Segue a gente! 📸 @ache.ai</span>
+            </a>
+            <a href="mailto:exemplo-email@example.com" className="icon-container2">
+                <Image src="/icons/icon-email.png" alt="Manda um e-mail" width={50} height={50} />
+                <span>Manda um e-mail! 📧 contato@acheai.app.br</span>
+            </a>
+        </div>
           <p style={{ marginTop: '20px', textAlign: 'justify' }}>
             🕒 Respondemos rapidinho! Todas as suas mensagens serão atendidas em até 6 horas. E ei, você aí que tá cheio de ideias e energia, sabia que estamos de braços abertos para novos parceiros? Se você acha que pode contribuir com o nosso projeto de alguma forma incrível, não deixe de entrar em contato. Vamos juntos fazer algo sensacional! 🚀
           </p>

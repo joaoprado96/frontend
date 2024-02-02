@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Informacoes() {
     return (
@@ -19,22 +20,23 @@ export default function Informacoes() {
                         <div className="tres-valores">
                             <div className="row">
                                 <div className="col col-desktop-4">
-                                    <img className="img-quem-somos" src="/icons/valor-1.png" alt="" />
+                                    <Image src="/icons/valor-1.png" alt="Valor 1: Conexões" width={100} height={100} />
                                     <p>Queremos criar</p>
                                     <h2>conexões...</h2>
                                 </div>
                                 <div className="col col-desktop-4">
-                                    <img className="img-quem-somos" src="/icons/valor-2.png" alt="" />
+                                    <Image src="/icons/valor-2.png" alt="Valor 2: Necessidades" width={100} height={100} />
                                     <p>A partir das nossas</p>
                                     <h2>necessidades...</h2>
                                 </div>
                                 <div className="col col-desktop-4">
-                                    <img className="img-quem-somos" src="/icons/valor-3.png" alt="" />
+                                    <Image src="/icons/valor-3.png" alt="Valor 3: Tempo" width={100} height={100} />
                                     <p>E valorizamos nosso</p>
                                     <h2>tempo!</h2>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
