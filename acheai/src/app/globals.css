@@ -52,8 +52,7 @@ body {
     justify-content: flex-end;
     min-height: 90vh;
     width: 100%;
-    background-color: #663A84;
-    /*background-image: url('/image/back-3.png'); /* Substitua o caminho pela localização real da sua imagem */
+    background-image: url('/image/back-6.jpg'); /* Substitua o caminho pela localização real da sua imagem */
     background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento */
     background-position: center; /* Centraliza a imagem no elemento */
     background-repeat: no-repeat; /* Evita repetição da imagem */
@@ -74,6 +73,9 @@ body {
     }
     .page {
         width: 768px;
+    }
+    .pagecontato{
+        background-image: url('/image/back-6-mobile.png'); /* Substitua o caminho pela localização real da sua imagem */
     }
 }
 
@@ -2503,9 +2505,11 @@ h5 {
     padding-right: 80px;
   }
 
+
+
   .text-section p {
     font-weight: bold;
-    color: #ffffff;
+    color: #505050;
     font-size: 14px;
     line-height: 1;
   }
@@ -2545,3 +2549,29 @@ h5 {
     margin-bottom: 20px;
     padding: 40px;
   }
+
+  .oi-vamos{
+    width: 500px;
+    height: auto;
+    padding-bottom: 30px;
+  }
+
+  @media (max-width: 768px) { /* Ajuste o valor de 'max-width' conforme necessário */
+    .oi-vamos {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container-side-contato {
+        flex-direction: column;
+    }
+
+    .text-section {
+        margin-top: 30px;
+    }
+
+    .form-section {
+        margin-top: 20px;
+    }
+}

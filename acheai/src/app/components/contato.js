@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Modal from 'react-modal';
+import Image from 'next/image';
+
 
 // Ajustes iniciais para o modal
 Modal.setAppElement('#__next');
@@ -43,18 +45,14 @@ export default function Contato() {
   };
 
   return (
-    <>
-      <Head>
-        <title>AcheAi</title>
-        <link rel="icon" type="image/png" href="/icons/logo.png" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-      </Head>
-      <div className="pagecontato">
+  <>
+    <Head>
+        <title>Contato - AcheAi</title>
+    </Head>
+    <div className="pagecontato">
         <div className="container-side-contato">
-          <div className="text-section">
-            <h2 className='p-texto-contato'>Oi! Vamos <span className='p-texto-contato'>conversar?</span></h2>
+          <div className="text-section" style={{ marginTop: '-90px' }}>
+                <img class="oi-vamos" src="/image/oi-vamos.png" alt="Descrição da imagem" />
             <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo?</p>
             <p>Me conta o que você está pensando! </p>
             <div className="contact-icons">
@@ -72,7 +70,7 @@ export default function Contato() {
               </a>
             </div>
             <p style={{ marginTop: '20px', textAlign: 'justify' }}>
-              Quer se tornar um parceiro e ser exposto na plataforma? 
+              Quer se tornar um parceiro e ser exposto na plataforma?
               <a href="mailto:exemplo-email@example.com" className="icon-container2">
                 <span>Cadastre-se aqui!</span>
               </a>
