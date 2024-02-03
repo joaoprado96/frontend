@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Select from 'react-select'; // Assumindo que você está usando uma biblioteca como react-select para os campos de seleção múltipla
 
 
-export default function cadastro() {
+export default function Cadastro() {
     const [formData, setFormData] = useState({
         nome: '',
         cnpj: '',
@@ -86,16 +86,19 @@ export default function cadastro() {
                     <input type="text" id="nome" placeholder="Nome"
                         value={formData.nome}
                         onChange={handleChange} />
+
                 <h4>CNPJ</h4>
                 <p>Por gentileza, informe o CNPJ do seu estabelecimento. Isso assegura a exclusividade e autenticidade do seu perfil na plataforma.</p>
                     <input type="text" id="cnpj" placeholder="CNPJ"
                         value={formData.cnpj}
                         onChange={handleChange} />
+
                 <h4>Descrição</h4>
                 <p>Chegou a hora de brilhar! Descreva seu estabelecimento de forma envolvente e única. Inspire-se e compartilhe o que torna seu lugar especial.</p>
                     <textarea id="descricao" placeholder="Descrição"
                         value={formData.descricao}
                         onChange={handleChange} />
+
                 <h4>Tipos de Eventos</h4>
                 <p>Informe os tipos de eventos que seu estabelecimento costuma sediar, como apresentações musicais ao vivo, eventos temáticos ou encontros corporativos.</p>
                     <Select
@@ -105,10 +108,9 @@ export default function cadastro() {
                         name="tiposEvento"
                         onChange={handleSelectChange}
                     />
-                    {/* Outros campos... */}
 
-                    <h4>Informações de Contato</h4>
-                    <p>Informe o endereço do seu estabelecimento.</p> 
+                <h4>Informações de Contato</h4>
+                <p>Informe o endereço do seu estabelecimento.</p> 
                     <div className="formulario-grupo">
                         <input
                             type="text"
@@ -126,8 +128,8 @@ export default function cadastro() {
                         />
                     </div>
 
-                    <h4>Endereço</h4>
-                    <p>Informe o endereço do seu estabelecimento. A localização exata ajuda seus futuros clientes a encontrá-lo com facilidade. Não esqueça de detalhar bairro, CEP e outros pontos de referência.</p>
+                <h4>Endereço</h4>
+                <p>Informe o endereço do seu estabelecimento. A localização exata ajuda seus futuros clientes a encontrá-lo com facilidade. Não esqueça de detalhar bairro, CEP e outros pontos de referência.</p>
                     <div className="formulario-grupo">
                         <input
                             type="text"

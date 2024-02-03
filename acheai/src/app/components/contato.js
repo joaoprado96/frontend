@@ -52,28 +52,33 @@ export default function Contato() {
     <div className="pagecontato">
         <div className="container-side-contato">
           <div className="text-section" style={{ marginTop: '-90px' }}>
-                <img class="oi-vamos" src="/image/oi-vamos.png" alt="Descrição da imagem" />
+            <Image 
+              src="/image/oi-vamos.png" 
+              class="oi-vamos" 
+              alt="titulo"
+              width={1920} // A proporção da imagem será mantida com base nessas dimensões
+              height={800}
+              layout="responsive"
+            />
             <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo?</p>
             <p>Me conta o que você está pensando! </p>
             <div className="contact-icons">
               <a href="https://exemplo-whatsapp.com" className="icon-container2">
-                <img src="icons/icon-whats-contact.png" />
+                <Image src="/icons/icon-whats-contact.png" alt="Whatsapp" width={30} height={30} />
                 <span>(11) 9999-9999</span>
               </a>
               <a href="https://exemplo-instagram.com" className="icon-container2">
-                <img src="icons/icon-instagram-contact.png" />
+              <Image src="/icons/icon-instagram-contact.png" alt="Instagram" width={30} height={30} />
                 <span>@ache.ai</span>
               </a>
               <a href="mailto:exemplo-email@example.com" className="icon-container2">
-                <img src="icons/icon-email-contact.png" />
+               <Image src="/icons/icon-email-contact.png" alt="E-mail" width={30} height={30} />
                 <span>contato@acheai.app.br</span>
               </a>
             </div>
             <p style={{ marginTop: '20px', textAlign: 'justify' }}>
-              Quer se tornar um parceiro e ser exposto na plataforma?
-              <a href="mailto:exemplo-email@example.com" className="icon-container2">
-                <span>Cadastre-se aqui!</span>
-              </a>
+              Quer se tornar um parceiro e ser exposto na plataforma?<br/>
+              <Link href="/cadastro">Cadastre-se aqui!</Link>
             </p>
           </div>
 
