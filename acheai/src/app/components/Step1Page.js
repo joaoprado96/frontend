@@ -8,7 +8,7 @@ const Step1Page = () => {
   return (
     <>
     <Head>
-      <title>Contato - AcheAi</title>
+      <title>Cadastro - AcheAi</title>
     </Head>
     <div className='formulario-cadastro'>
       <br/><br/><br/>

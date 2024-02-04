@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { useProgress } from '../../app/contexts/ProgressContext';
-import Select, { components } from 'react-select';
-import { Form, Button } from 'react-bootstrap';
+import Select from 'react-select';
+import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
 
 const Step3Page = () => {
-  const { currentStep, handleNextStep, handlePreviousStep } = useProgress();
+  const { handleNextStep, handlePreviousStep } = useProgress();
   const [descricao, setDescricao] = useState('');
   const [taxaEntrada, setTaxaEntrada] = useState('');
-  const [avaliacaoClientes, setAvaliacaoClientes] = useState('');
+  const [avaliacaoClientes, setAvaliacaoClientes] = useState(2.5); // Inicia com 0
   const [preco, setPreco] = useState('');
-  const [nivel, setNivel] = useState('');
+  const [nivel, setNivel] = useState('1');
   const [tiposEvento, setTiposEvento] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessages, setErrorMessages] = useState([]);
 
   const tiposEventoOptions = [
     { value: "Sem informação", label: "Tipo de Evento: Sem essa informação" },
@@ -38,15 +41,84 @@ const Step3Page = () => {
     { value: "experiência gastronômica", label: "Experiência gastronômica" },
   ];
 
+  // Função para renderizar as estrelas com base na avaliação
+  const renderStars = (avaliacao) => {
+    const totalStars = 5;
+    const fullStars = Math.floor(avaliacao);
+    const emptyStars = totalStars - fullStars;
+    const decimalValue = avaliacao.toFixed(1);
+  
+    return (
+      <>
+        {'★'.repeat(fullStars)}
+        {'☆'.repeat(emptyStars)}
+        {` ${decimalValue}`}
+      </>
+    );
+  };
+  
+  
+  
   const handleTipoEventoChange = (selectedOptions) => {
     setTiposEvento(selectedOptions);
   };
 
+  const validateFields = () => {
+    let newErrors = {};
+    let messages = [];
+  
+    if (!descricao) {
+      newErrors = { ...newErrors, descricao: 'Descrição é obrigatória.' };
+      messages.push('Descrição é obrigatória.');
+    }
+    if (taxaEntrada === '') {
+      newErrors = { ...newErrors, taxaEntrada: 'Taxa de entrada é obrigatória.' };
+      messages.push('Taxa de entrada é obrigatória.');
+    }
+    // Adicionando validação para avaliacaoClientes
+    if (avaliacaoClientes === '') {
+      newErrors = { ...newErrors, avaliacaoClientes: 'Avaliação dos clientes é obrigatória.' };
+      messages.push('Avaliação dos clientes é obrigatória.');
+    }
+    // Adicionando validação para preco
+    if (preco === '') {
+      newErrors = { ...newErrors, preco: 'Faixa de preço é obrigatória.' };
+      messages.push('Faixa de preço é obrigatória.');
+    }
+    // Adicionando validação para nivel
+    if (nivel === '') {
+      newErrors = { ...newErrors, nivel: 'Categoria do cliente é obrigatória.' };
+      messages.push('Categoria do cliente é obrigatória.');
+    }
+    // Adicionando validação para tiposEvento
+    if (tiposEvento.length === 0) {
+      newErrors = { ...newErrors, tiposEvento: 'Pelo menos um tipo de evento deve ser selecionado.' };
+      messages.push('Pelo menos um tipo de evento deve ser selecionado.');
+    }
+  
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setErrorMessages(messages);
+      setShowErrorModal(true);
+      return false;
+    }
+  
+    setErrors({}); // Limpar erros se tudo estiver correto
+    setShowErrorModal(false);
+    return true;
+  };
+  
+
+  const handleNext = () => {
+    if (validateFields()) {
+      handleNextStep();
+    }
+  };
   // Código para renderizar o formulário com os novos campos
   return (
 <>
   <Head>
-    <title>Passo 3: Informações Adicionais - AcheAi</title>
+      <title>Cadastro - AcheAi</title>
   </Head>
   <div className='formulario-cadastro'>
     <h1>Passo 3: Informações Adicionais</h1>
@@ -55,10 +127,11 @@ const Step3Page = () => {
         <Form.Label>Descrição</Form.Label>
         <Form.Control
           as="textarea"
-          rows={3}
+          rows={4}
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
           placeholder="Descreva seu estabelecimento"
+          style={{ minHeight: "150px" }} // Defina a altura mínima desejada aqui
         />
       </Form.Group>
 
@@ -89,20 +162,25 @@ const Step3Page = () => {
         </Form.Control>
       </Form.Group>
 
-      <Form.Group>
-        <Form.Label>Estrelas do Google</Form.Label>
-        <Form.Control
-          as="select"
-          value={avaliacaoClientes}
-          onChange={(e) => setAvaliacaoClientes(e.target.value)}
-        >
-          <option value="">Avaliação dos Clientes</option>
-          {/* Gerar opções de 0 a 5 em incrementos de 0.1 */}
-          {[...Array(51).keys()].map(i => (
-            <option key={i} value={(i / 10).toFixed(1)}>{(i / 10).toFixed(1)}</option>
-          ))}
-        </Form.Control>
-      </Form.Group>
+      <Form.Group as={Row} className="align-items-center">
+          <Form.Label column sm={3}>
+            Avaliação no Google
+          </Form.Label>
+          <Col sm={7}>
+            <Form.Control
+              type="range"
+              custom
+              min="0"
+              max="5"
+              step="0.1"
+              value={avaliacaoClientes}
+              onChange={(e) => setAvaliacaoClientes(parseFloat(e.target.value))}
+            />
+          </Col>
+          <Col sm={2} className="text-center">
+            {renderStars(avaliacaoClientes)}
+          </Col>
+        </Form.Group>
 
       <Form.Group>
         <Form.Label>Faixa de Preço</Form.Label>
@@ -120,26 +198,42 @@ const Step3Page = () => {
         </Form.Control>
       </Form.Group>
 
-      <Form.Group>
-        <Form.Label>Categoria do Cliente</Form.Label>
-        <Form.Control
-          as="select"
-          value={nivel}
-          onChange={(e) => setNivel(e.target.value)}
-        >
-          <option value="">Selecione a categoria</option>
-          <option value="1">Não verificado</option>
-          <option value="2">Verificado</option>
-          <option value="3">Ouro</option>
-        </Form.Control>
-      </Form.Group>
+    <Form.Group>
+      <Form.Label>Categoria do Restaurante</Form.Label>
+      <Form.Control
+        as="select"
+        value={nivel}
+        onChange={(e) => setNivel(e.target.value)}
+        disabled={true} // Desabilita a seleção para torná-la não editável
+      >
+        <option value="">Selecione a categoria</option>
+        <option value="1">Não verificado</option>
+        <option value="2">Verificado</option>
+        <option value="3">Ouro</option>
+      </Form.Control>
+    </Form.Group>
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
         <Button variant="secondary" onClick={handlePreviousStep}>Anterior</Button>
-        <Button variant="primary" onClick={handleNextStep}>Próximo</Button>
+        <Button variant="primary" onClick={handleNext}>Próximo</Button>
       </div>
     </Form>
   </div>
+    <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
+        <Modal.Header>
+          <Modal.Title>Preenchimento obrigatório</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {errorMessages.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
 </>
 
   );

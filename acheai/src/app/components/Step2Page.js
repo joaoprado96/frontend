@@ -166,7 +166,7 @@ const Step2Page = () => {
   return (
 <>
   <Head>
-    <title>Passo 2: Informações Gerais - AcheAi</title>
+      <title>Cadastro - AcheAi</title>
   </Head>
   <div className="formulario-cadastro">
     <h1>Passo 2: Informações Gerais</h1>
