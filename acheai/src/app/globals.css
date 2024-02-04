@@ -2745,7 +2745,7 @@ h5 {
     }
 
     .text-section {
-        margin-top: -20px;
+        margin-top: calc(var(--navbar-height) - 30px);
         padding: 50px;
     }
 
