@@ -51,17 +51,16 @@ export default function Contato() {
     </Head>
     <div className="pagecontato">
         <div className="container-side-contato">
-          <div className="text-section" style={{ marginTop: '-90px' }}>
+          <div className="text-section">
             <Image 
               src="/image/oi-vamos.png" 
               class="oi-vamos" 
               alt="titulo"
               width={1920} // A proporção da imagem será mantida com base nessas dimensões
               height={800}
-              layout="responsive"
             />
             <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo?</p>
-            <p>Me conta o que você está pensando! </p>
+            <p>Me conta o que você está pensando!</p>
             <div className="contact-icons">
               <a href="https://exemplo-whatsapp.com" className="icon-container2">
                 <Image src="/icons/icon-whats-contact.png" alt="Whatsapp" width={30} height={30} />
@@ -77,12 +76,12 @@ export default function Contato() {
               </a>
             </div>
             <p style={{ marginTop: '20px', textAlign: 'justify' }}>
-              Quer se tornar um parceiro e ser exposto na plataforma?<br/>
-              <Link href="/cadastro">Cadastre-se aqui!</Link>
+              Quer se tornar um parceiro e ser exposto na plataforma?<br/><br></br>
+              <Link href="/cadastro" style={{  color: '#E5671D', fontSize: '18px', marginTop: '10px' }}>Cadastre-se aqui!</Link>
             </p>
           </div>
 
-          <div className="form-section card-contato">
+          <div className="form-section">
             <form id="contactForm" className="formulario-cadastro" onSubmit={handleSubmit}>
               <label htmlFor="nome">Nome</label>
               <input type="text" id="nome" name="nome" required value={nome} onChange={(e) => setNome(e.target.value)} />
