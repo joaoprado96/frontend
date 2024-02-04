@@ -45,17 +45,35 @@ body {
     width: 100%;
 }
 
-.pagecontato {
+/*.pagecontato {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     min-height: 90vh;
     width: 100%;
-    background-image: url('/image/back-6.jpg'); /* Substitua o caminho pela localização real da sua imagem */
-    background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento */
-    background-position: center; /* Centraliza a imagem no elemento */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-image: url('/image/back-6.jpg');
+    /* Substitua o caminho pela localização real da sua imagem */
+  /*  background-size: cover;
+    /* Ajusta o tamanho da imagem para cobrir todo o elemento */
+/*    background-position: center;
+    /* Centraliza a imagem no elemento */
+  /*  background-repeat: no-repeat;
+    /* Evita repetição da imagem */
+/*}*/
+
+.pagecontato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    /* Ajuste para 100vh para garantir que o elemento ocupe a altura total da tela */
+    width: 100%;
+    background-image: url('/image/back-6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
 .pagedetalhes {
@@ -66,23 +84,34 @@ body {
     min-height: 100vh;
     width: 100%;
 }
+
 /* Media query para dispositivos móveis */
-@media (max-width: 768px) { /* Ajuste o valor de 'max-width' conforme necessário */
+@media (max-width: 768px) {
+
+    /* Ajuste o valor de 'max-width' conforme necessário */
     .pagedetalhes {
         flex-direction: column;
     }
+
     .page {
         width: 768px;
     }
-    .pagecontato{
-        background-image: url('/image/back-6-mobile.png'); /* Substitua o caminho pela localização real da sua imagem */
+
+    .pagecontato {
+        background-image: url('/image/back-6-mobile.png');
+        /* Substitua o caminho pela localização real da sua imagem */
+        background-size: 100% 100%; /* Ajuste conforme necessário */
+        margin-top: 60px;
     }
 }
 
-@media (max-width: 480px) { /* Ajuste o valor de 'max-width' conforme necessário */
+@media (max-width: 480px) {
+
+    /* Ajuste o valor de 'max-width' conforme necessário */
     .pagedetalhes {
         flex-direction: column;
     }
+
     .page {
         width: 480px;
     }
@@ -102,25 +131,30 @@ body {
 }
 
 .info-col {
-    padding: 10px; /* Adicione um espaçamento interno conforme necessário */
-  }
+    padding: 10px;
+    /* Adicione um espaçamento interno conforme necessário */
+}
 
-  /* Estilo para a coluna do card */
-  .card-cole {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicione sombra ao card */
-    border: 1px solid #ddd; /* Adicione uma borda */
-    border-radius: 30px; /* Adicione bordas arredondadas */
-    overflow: hidden; /* Garante que as bordas arredondadas se apliquem corretamente */
+/* Estilo para a coluna do card */
+.card-cole {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adicione sombra ao card */
+    border: 1px solid #ddd;
+    /* Adicione uma borda */
+    border-radius: 30px;
+    /* Adicione bordas arredondadas */
+    overflow: hidden;
+    /* Garante que as bordas arredondadas se apliquem corretamente */
     width: 100%;
     height: 200px;
-  }
+}
 
-  /* Adapta o tamanho do card para ocupar a largura máxima da tela */
-  @media (max-width: 767px) {
+/* Adapta o tamanho do card para ocupar a largura máxima da tela */
+@media (max-width: 767px) {
     .card-col {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
 
 
 @media screen and (max-width: 1160px) {
@@ -183,7 +217,7 @@ a {
 }
 
 .nav .nav-links a:hover {
-   /* background-color: var(--branco);*/
+    /* background-color: var(--branco);*/
     /* Cor de fundo ao passar o mouse */
     color: var(--secundaria);
     /* Cor do texto ao passar o mouse */
@@ -197,7 +231,7 @@ a {
 }
 
 .nav .logo:hover {
- /*   background-color: var(--secundaria);*/
+    /*   background-color: var(--secundaria);*/
     /* Cor de fundo ao passar o mouse */
     color: var(--secundaria);
     /* Cor do texto ao passar o mouse */
@@ -363,7 +397,7 @@ ul {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color:#f9f9f9 ;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -656,7 +690,7 @@ button:hover {
     justify-content: flex-end;
 }
 
-.btn-insta-whats{
+.btn-insta-whats {
     background-color: #ffffff;
     display: flex;
     flex-wrap: wrap;
@@ -713,6 +747,7 @@ h4 {
     font-size: 1.5rem;
     margin-top: 15px;
 }
+
 .h4-small {
     font-size: 14px;
 }
@@ -930,24 +965,27 @@ select:focus {
 }
 
 .notification-popup {
-  /* Estilos básicos para a notificação */
-  position: fixed;
-  bottom: 20px; /* Posiciona 20px acima do fundo da tela */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translateX(-50%); /* Ajusta a centralização */
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  z-index: 1000;
-  /* mais estilos aqui... */
+    /* Estilos básicos para a notificação */
+    position: fixed;
+    bottom: 20px;
+    /* Posiciona 20px acima do fundo da tela */
+    left: 50%;
+    /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+    /* Ajusta a centralização */
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    /* mais estilos aqui... */
 }
 
 .notification-popup.success {
-  background-color: green;
+    background-color: green;
 }
 
 .notification-popup.error {
-  background-color: red;
+    background-color: red;
 }
 
 
@@ -1002,6 +1040,7 @@ select:focus {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 .select2-container .select2-selection--single {
     padding: 12px;
     box-sizing: border-box;
@@ -1035,6 +1074,13 @@ select:focus {
     .formulario-cadastro {
         padding: 10px;
         max-width: 70%;
+        background-color: var(--primaria);
+    }
+
+    .formulario-cadastro p,
+    .formulario-cadastro label,
+    .formulario-cadastro a {
+        color: var(--branco);
     }
 
     .formulario-cadastro h1 {
@@ -1080,7 +1126,8 @@ select:focus {
 }
 
 .container-evento {
-    position: relative; /* Necessário para posicionar o botão em relação a este contêiner */
+    position: relative;
+    /* Necessário para posicionar o botão em relação a este contêiner */
     width: 100%;
     margin-top: calc(var(--navbar-height) * 0.8);
     background-color: var(--branco);
@@ -1141,15 +1188,17 @@ select:focus {
     display: flex;
     margin-top: var(--navbar-height);
     padding: 40px 40px;
-    color:#616161;
+    color: #616161;
     font-size: 14px;
 }
 
 .img-quem-somos {
-    width: 150px; /* Ajuste conforme necessário */
-    height: auto; /* Mantém a proporção original da imagem */
+    width: 150px;
+    /* Ajuste conforme necessário */
+    height: auto;
+    /* Mantém a proporção original da imagem */
     margin-bottom: 30px;
-  }
+}
 
 @media (max-width: 480px) {
     .img-quem-somos {
@@ -1157,12 +1206,12 @@ select:focus {
         width: 50%;
     }
 
-    .quem-somos{
+    .quem-somos {
         font-size: 15px;
     }
 }
 
-.tres-valores{
+.tres-valores {
     font-size: 15px;
     margin-top: 40px;
     display: flex;
@@ -1173,14 +1222,17 @@ select:focus {
 
 .col {
     display: flex;
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    align-items: center; /* Centraliza os elementos no eixo transversal (vertical) */
-    text-align: center; /* Centraliza o texto horizontalmente */
-  }
+    flex-direction: column;
+    /* Empilha os elementos verticalmente */
+    align-items: center;
+    /* Centraliza os elementos no eixo transversal (vertical) */
+    text-align: center;
+    /* Centraliza o texto horizontalmente */
+}
 
-.tres-valores h2{
+.tres-valores h2 {
     font-size: 30px;
-    color:#663A84;
+    color: #663A84;
 }
 
 .container-central {
@@ -1214,7 +1266,7 @@ select:focus {
         margin-bottom: 20px;
     }
 
-    .container-central{
+    .container-central {
         width: 90%;
         margin-top: 30%;
     }
@@ -1319,7 +1371,7 @@ select:focus {
     text-decoration: none;
     outline: none;
     color: var(--branco);
-    background-color:#d2d2d2;
+    background-color: #d2d2d2;
     border: none;
     border-radius: 20px;
 }
@@ -1401,17 +1453,19 @@ select:focus {
 
 .filtro-select.ativo {
     /* Estilos para quando está ativo (ex: cor de fundo ou borda alterada) */
-    background-color: var(--secundaria); /* Exemplo: mudança na cor de fundo */
+    background-color: var(--secundaria);
+    /* Exemplo: mudança na cor de fundo */
     color: var(--branco);
     /* outros estilos */
-  }
+}
 
-  .filtro-select.inativo {
+.filtro-select.inativo {
     /* Estilos para quando está ativo (ex: cor de fundo ou borda alterada) */
-    background-color: var(--branco); /* Exemplo: mudança na cor de fundo */
+    background-color: var(--branco);
+    /* Exemplo: mudança na cor de fundo */
     color: var(--primaria);
     /* outros estilos */
-  }
+}
 
 .filtro-select-normal {
     /* Estilos adicionais para os elementos select, se necessário */
@@ -1477,7 +1531,8 @@ select:focus {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 
-    white-space: nowrap; /* Impede a quebra de linha */
+    white-space: nowrap;
+    /* Impede a quebra de linha */
 }
 
 
@@ -1497,19 +1552,26 @@ select:focus {
     font-size: 12px;
     /* Tamanho do título */
     color: #333;
-    overflow: hidden;    /* Esconde o conteúdo que excede o espaço do contêiner */
-    text-overflow: ellipsis; /* Adiciona "..." se o conteúdo exceder o espaço disponível */
+    overflow: hidden;
+    /* Esconde o conteúdo que excede o espaço do contêiner */
+    text-overflow: ellipsis;
+    /* Adiciona "..." se o conteúdo exceder o espaço disponível */
     /* Cor do texto */
 }
 
 .div-icon-title p {
     margin: 0;
     margin-left: 2px;
-    font-size: 10px; /* Tamanho do texto */
-    color: #333; /* Cor do texto */
-    white-space: nowrap; /* Impede a quebra de linha */
-    overflow: hidden; /* Esconde conteúdo que excede o espaço */
-    text-overflow: ellipsis; /* Adiciona "..." se o conteúdo for muito longo */
+    font-size: 10px;
+    /* Tamanho do texto */
+    color: #333;
+    /* Cor do texto */
+    white-space: nowrap;
+    /* Impede a quebra de linha */
+    overflow: hidden;
+    /* Esconde conteúdo que excede o espaço */
+    text-overflow: ellipsis;
+    /* Adiciona "..." se o conteúdo for muito longo */
 }
 
 
@@ -1714,7 +1776,7 @@ select:focus {
     /* Altura completa do card */
 }
 
-.card-contato {
+/*.card-contato {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1724,7 +1786,7 @@ select:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     background-color: #ffffff;
-}
+}*/
 
 .card-content img {
     width: 100%;
@@ -2021,47 +2083,59 @@ h5 {
     font-size: 14px;
 }
 
-  #overlay2 {
+#overlay2 {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
-    z-index: 1000; /* Z-index alto para sobrepor outros elementos */
-  }
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo preto transparente */
+    z-index: 1000;
+    /* Z-index alto para sobrepor outros elementos */
+}
 
 
-  .loader-overlay {
-    position: fixed; /* Posicionamento fixo para cobrir toda a tela */
+.loader-overlay {
+    position: fixed;
+    /* Posicionamento fixo para cobrir toda a tela */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo semi-transparente */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garante que o loader fique acima de outros conteúdos */
-  }
-  
-  .loader {
-    border: 5px solid rgba(255, 255, 255, 0.2); /* Cor mais clara para o loader */
-    border-top: 5px solid #ffffff; /* Cor branca para a parte superior do spinner */
+    z-index: 1000;
+    /* Garante que o loader fique acima de outros conteúdos */
+}
+
+.loader {
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    /* Cor mais clara para o loader */
+    border-top: 5px solid #ffffff;
+    /* Cor branca para a parte superior do spinner */
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  
-  .mensagem-vazia {
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.mensagem-vazia {
     text-align: center;
     padding: 20px;
     color: #333;
@@ -2084,27 +2158,35 @@ h5 {
 }
 
 .culinaria {
-    display: inline-block; /* ou 'block' dependendo do layout */
-    white-space: nowrap;  /* Mantém o texto em uma única linha */
-    overflow: hidden;     /* Esconde o conteúdo que ultrapassa o elemento */
-    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+    display: inline-block;
+    /* ou 'block' dependendo do layout */
+    white-space: nowrap;
+    /* Mantém o texto em uma única linha */
+    overflow: hidden;
+    /* Esconde o conteúdo que ultrapassa o elemento */
+    text-overflow: ellipsis;
+    /* Adiciona reticências se o texto for muito longo */
     /* Estilos adicionais aqui */
     max-width: 95%;
 }
 
 .foto-grande {
-    width: 100%; /* Ajusta a largura do container da foto grande para ocupar 100% da largura disponível */
-    height: 300px; /* Altura fixa para a foto grande */
+    width: 100%;
+    /* Ajusta a largura do container da foto grande para ocupar 100% da largura disponível */
+    height: 300px;
+    /* Altura fixa para a foto grande */
     border-radius: 30px;
     margin-bottom: 20px;
-    overflow: hidden; /* Garante que a imagem não exceda o container */
+    overflow: hidden;
+    /* Garante que a imagem não exceda o container */
 }
 
 .foto-grande img {
     border-radius: 30px;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta a imagem para cobrir o espaço disponível, mantendo sua proporção */
+    object-fit: cover;
+    /* Ajusta a imagem para cobrir o espaço disponível, mantendo sua proporção */
 }
 
 .miniaturas {
@@ -2116,38 +2198,49 @@ h5 {
 
 .miniatura-item {
     border-radius: 10px;
-    width: 80px; /* Largura fixa para miniaturas */
-    height: 80px; /* Altura fixa para miniaturas */
+    width: 80px;
+    /* Largura fixa para miniaturas */
+    height: 80px;
+    /* Altura fixa para miniaturas */
     margin: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    overflow: hidden; /* Garante que a imagem não exceda o container */
+    overflow: hidden;
+    /* Garante que a imagem não exceda o container */
     cursor: pointer;
 }
 
 .miniatura-imagem {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta a imagem para cobrir o espaço disponível, mantendo sua proporção */
+    object-fit: cover;
+    /* Ajusta a imagem para cobrir o espaço disponível, mantendo sua proporção */
 }
 
 /* Media query para telas menores */
 @media (max-width: 600px) {
     .foto-grande {
-        height: 200px; /* Altura menor para telas menores */
+        height: 200px;
+        /* Altura menor para telas menores */
     }
 
     .miniatura-item {
-        width: 70px; /* Largura menor para miniaturas em telas menores */
-        height: 70px; /* Altura menor para miniaturas em telas menores */
+        width: 70px;
+        /* Largura menor para miniaturas em telas menores */
+        height: 70px;
+        /* Altura menor para miniaturas em telas menores */
     }
 }
 
 #imagemModalSrc {
-    max-width: 100%; /* A imagem pode ocupar no máximo 100% da largura do modal */
-    height: auto; /* Altura auto para manter a proporção */
-    display: block; /* Remove qualquer margem extra abaixo da imagem */
-    margin: auto; /* Centraliza a imagem horizontalmente e verticalmente */
+    max-width: 100%;
+    /* A imagem pode ocupar no máximo 100% da largura do modal */
+    height: auto;
+    /* Altura auto para manter a proporção */
+    display: block;
+    /* Remove qualquer margem extra abaixo da imagem */
+    margin: auto;
+    /* Centraliza a imagem horizontalmente e verticalmente */
 }
 
 .horarios-aviso {
@@ -2173,46 +2266,69 @@ h5 {
 }
 
 .endereco-info {
-    font-size: 10px; /* Ajuste o tamanho da letra conforme necessário */
+    font-size: 10px;
+    /* Ajuste o tamanho da letra conforme necessário */
     /* Outros estilos que você deseja aplicar */
 }
 
 .endereco-conteudo {
-    text-decoration: underline; /* Aplica o sublinhado apenas ao conteúdo do endereço */
+    text-decoration: underline;
+    /* Aplica o sublinhado apenas ao conteúdo do endereço */
 }
 
 
-.endereco-info .fa-map-marker-alt, /* Ícone de localização */
-.endereco-info .fa-clipboard, /* Ícone de clipboard */
-.endereco-info .fa-location-arrow, /* Ícone de seta de localização */
-.endereco-info .fa-subway { /* Ícone de metrô */
-    font-size: 14px; /* Ajuste o tamanho conforme necessário */
-    margin-left: 5px; /* Espaço entre o texto do endereço e o ícone */
-    vertical-align: middle; /* Alinhamento vertical com o texto */
-    color: var(--primaria); /* Cor do ícone */
-    text-shadow: 0px 0px 0px #000000; /* Sombra do texto do ícone */
+.endereco-info .fa-map-marker-alt,
+/* Ícone de localização */
+.endereco-info .fa-clipboard,
+/* Ícone de clipboard */
+.endereco-info .fa-location-arrow,
+/* Ícone de seta de localização */
+.endereco-info .fa-subway {
+    /* Ícone de metrô */
+    font-size: 14px;
+    /* Ajuste o tamanho conforme necessário */
+    margin-left: 5px;
+    /* Espaço entre o texto do endereço e o ícone */
+    vertical-align: middle;
+    /* Alinhamento vertical com o texto */
+    color: var(--primaria);
+    /* Cor do ícone */
+    text-shadow: 0px 0px 0px #000000;
+    /* Sombra do texto do ícone */
 }
 
 
 .horarios-container .fa-times-circle,
 .horarios-aviso .fa-info-circle,
 .horarios-container .fa-clock {
-    font-size: 14px; /* Ajuste o tamanho conforme necessário */
-    margin-left: 5px; /* Espaço entre o texto do endereço e o ícone */
-    vertical-align: middle; /* Alinhamento vertical com o texto */
-    color: var(--primaria); /* Cor do ícone */
-    text-shadow: 0px 0px 0px #000000; /* Sombra do texto do ícone */
+    font-size: 14px;
+    /* Ajuste o tamanho conforme necessário */
+    margin-left: 5px;
+    /* Espaço entre o texto do endereço e o ícone */
+    vertical-align: middle;
+    /* Alinhamento vertical com o texto */
+    color: var(--primaria);
+    /* Cor do ícone */
+    text-shadow: 0px 0px 0px #000000;
+    /* Sombra do texto do ícone */
 }
 
 .tag-texto {
     position: absolute;
-    top: 10px; /* Ajuste a distância do topo conforme necessário */
-    right: 10px; /* Ajuste a distância da direita conforme necessário */
-    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo da tag */
-    color: #fff; /* Cor do texto da tag */
-    padding: 5px 10px; /* Espaçamento interno da tag */
-    border-radius: 5px; /* Arredondamento da tag */
-    font-size: 12px; /* Tamanho da fonte da tag */
+    top: 10px;
+    /* Ajuste a distância do topo conforme necessário */
+    right: 10px;
+    /* Ajuste a distância da direita conforme necessário */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Cor de fundo da tag */
+    color: #fff;
+    /* Cor do texto da tag */
+    padding: 5px 10px;
+    /* Espaçamento interno da tag */
+    border-radius: 5px;
+    /* Arredondamento da tag */
+    font-size: 12px;
+    /* Tamanho da fonte da tag */
 }
 
 /*#carrosselTipoEvento {
@@ -2220,36 +2336,46 @@ h5 {
     background-size: cover; /* Garante que a imagem cubra todo o container */
 /*    background-repeat: no-repeat;
     background-position: center; /* Centraliza a imagem de fundo */
- /*   display: flex;
+/*   display: flex;
     justify-content: end;
     align-items: end;
     width: 100vw; /* Define a largura como 100% da viewport */
 /*    height: 100vh; /* Define a altura como 100% da viewport */
- /*   margin: 0;
+/*   margin: 0;
 }*/
 
 #video-background {
-    background-size: cover; /* Garante que a imagem cubra todo o container */
+    background-size: cover;
+    /* Garante que a imagem cubra todo o container */
     background-repeat: no-repeat;
-    background-position: center; /* Centraliza a imagem de fundo */
+    background-position: center;
+    /* Centraliza a imagem de fundo */
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    width: 100%; /* Define a largura como 100% da viewport */
-    height: 100%; /* Define a altura como 100% da viewport */
+    width: 100%;
+    /* Define a largura como 100% da viewport */
+    height: 100%;
+    /* Define a altura como 100% da viewport */
     margin: 0;
 }
 
-@media (max-width: 768px) { /* Ajuste o valor '768px' conforme necessário */
+@media (max-width: 768px) {
+
+    /* Ajuste o valor '768px' conforme necessário */
     #video-background {
-        background-size: cover; /* Garante que a imagem cubra todo o container */
+        background-size: cover;
+        /* Garante que a imagem cubra todo o container */
         background-repeat: no-repeat;
-        background-position: center; /* Centraliza a imagem de fundo */
+        background-position: center;
+        /* Centraliza a imagem de fundo */
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        width: 100%; /* Define a largura como 100% da viewport */
-        height: 100%; /* Define a altura como 100% da viewport */
+        width: 100%;
+        /* Define a largura como 100% da viewport */
+        height: 100%;
+        /* Define a altura como 100% da viewport */
         margin: 0;
     }
 }
@@ -2277,9 +2403,12 @@ h5 {
     padding: 10px 10px;
     width: 15%;
     font-size: 15px;
-    top: 52%; /* Ajuste este valor conforme necessário para a posição vertical */
-    left: 50%; /* Posiciona o início do botão no meio */
-    transform: translateX(-50%); /* Desloca o botão para trás pela metade de sua largura, centralizando-o */
+    top: 52%;
+    /* Ajuste este valor conforme necessário para a posição vertical */
+    left: 50%;
+    /* Posiciona o início do botão no meio */
+    transform: translateX(-50%);
+    /* Desloca o botão para trás pela metade de sua largura, centralizando-o */
     z-index: 10;
     background-color: var(--primaria);
     color: var(--branco);
@@ -2295,13 +2424,16 @@ h5 {
     padding-top: 15px;
     width: 20%;
     font-size: 15px;
-    top: 55%; /* Ajuste este valor conforme necessário para a posição vertical */
-    left: 50%; /* Posiciona o início do botão no meio */
-    transform: translateX(-50%); /* Desloca o botão para trás pela metade de sua largura, centralizando-o */
+    top: 55%;
+    /* Ajuste este valor conforme necessário para a posição vertical */
+    left: 50%;
+    /* Posiciona o início do botão no meio */
+    transform: translateX(-50%);
+    /* Desloca o botão para trás pela metade de sua largura, centralizando-o */
     z-index: 10;
     color: var(--standard2);
     border: none;
- /*   border-radius: 20px;*/
+    /*   border-radius: 20px;*/
     cursor: pointer;
 }
 
@@ -2314,7 +2446,8 @@ h5 {
 
 @media screen and (max-width: 600px) {
     .botaoSobreCarrossel {
-        top: 45%; /* Ajuste este valor conforme necessário para a posição vertical */
+        top: 45%;
+        /* Ajuste este valor conforme necessário para a posição vertical */
         font-size: 1px;
         padding: 5px 5px;
         background-color: #ffffff00;
@@ -2323,7 +2456,8 @@ h5 {
 
 @media screen and (max-width: 600px) {
     .txtSobreCarrossel {
-        top: 45%; /* Ajuste este valor conforme necessário para a posição vertical */
+        top: 45%;
+        /* Ajuste este valor conforme necessário para a posição vertical */
         font-size: 10px;
         padding: 5px 5px;
         width: 30%;
@@ -2344,25 +2478,31 @@ h5 {
 
 .texto-sobre-video {
     position: absolute;
-    top: 40%; /* Ajuste conforme necessário */
-    left: 50%; /* Ajuste conforme necessário */
-    transform: translate(-50%, -50%); /* Centraliza o texto */
+    top: 40%;
+    /* Ajuste conforme necessário */
+    left: 50%;
+    /* Ajuste conforme necessário */
+    transform: translate(-50%, -50%);
+    /* Centraliza o texto */
 }
 
 .p-texto {
     font-size: 32px;
-    color:var(--primaria);
+    color: var(--primaria);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: 'League Spartan', sans-serif; /* Fonte moderna */
-    padding: 10px; /* Espaçamento interno para separar o texto das bordas */
-    border-radius: 10px; /* Bordas arredondadas para um visual moderno */
+    font-family: 'League Spartan', sans-serif;
+    /* Fonte moderna */
+    padding: 10px;
+    /* Espaçamento interno para separar o texto das bordas */
+    border-radius: 10px;
+    /* Bordas arredondadas para um visual moderno */
     /* Sombra no texto para melhorar a legibilidade */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 
     /* Animação */
- /*   animation: realcarTexto 3s infinite alternate;*/
+    /*   animation: realcarTexto 3s infinite alternate;*/
 }
 
 
@@ -2377,15 +2517,20 @@ h5 {
 
 @media screen and (max-width: 600px) {
     .texto-sobre-video {
-        top: 34%; /* Ajuste conforme necessário */
-        left: 50%; /* Ajuste conforme necessário */
-        transform: translate(-50%, -50%); /* Centraliza o texto */
-        color: rgb(21, 21, 21); /* Cor do texto */
+        top: 34%;
+        /* Ajuste conforme necessário */
+        left: 50%;
+        /* Ajuste conforme necessário */
+        transform: translate(-50%, -50%);
+        /* Centraliza o texto */
+        color: rgb(21, 21, 21);
+        /* Cor do texto */
     }
+
     .p-texto {
         font-size: 25px;
     }
-    
+
 
 }
 
@@ -2403,7 +2548,8 @@ h5 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-text h4, .welcome-text h5 {
+.welcome-text h4,
+.welcome-text h5 {
     color: #007bff;
 }
 
@@ -2417,13 +2563,15 @@ h5 {
 }
 
 .choices__list--multiple .choices__item {
-    background-color: var(--primaria); /* Cor roxa */
+    background-color: var(--primaria);
+    /* Cor roxa */
     color: white;
     border: none;
 }
 
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
-    background-color: var(--primaria); /* Um tom de roxo mais claro para o item destacado */
+    background-color: var(--primaria);
+    /* Um tom de roxo mais claro para o item destacado */
     color: white;
     border: none;
 }
@@ -2432,63 +2580,66 @@ h5 {
     font-size: 10px;
     width: 100%;
     margin-left: 0px;
-    background-color:var(--branco); /* Cor de fundo roxa clara */
-    color: var(--primaria); /* Cor do texto roxo */
-    opacity: 1; /* Necessário para garantir a visibilidade em alguns navegadores */
+    background-color: var(--branco);
+    /* Cor de fundo roxa clara */
+    color: var(--primaria);
+    /* Cor do texto roxo */
+    opacity: 1;
+    /* Necessário para garantir a visibilidade em alguns navegadores */
 }
 
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
 }
 
 .modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 90%;
-  z-index: 100;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    z-index: 100;
 }
 
 .modal-content h2 {
-  margin-top: 0;
-  color: #333;
+    margin-top: 0;
+    color: #333;
 }
 
 .modal-content p {
-  color: #666;
+    color: #666;
 }
 
 .modal-content button {
-  background-color: var(--primaria);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  border-radius: 5px;
-  cursor: pointer;
+    background-color: var(--primaria);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .modal-content button:hover {
-  background-color: var(--secundaria);
+    background-color: var(--secundaria);
 }
 
 .modal {
-  padding: 20px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-testando {
@@ -2496,67 +2647,89 @@ h5 {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
-  }
-  
-  .text-section {
+}
+
+.text-section {
     flex-basis: calc(60% - 20px);
     margin-bottom: 20px;
     padding: 20px;
     padding-right: 80px;
-  }
+    margin-top:-50px
+}
 
-
-
-  .text-section p {
+.text-section p {
     font-weight: bold;
     color: #505050;
     font-size: 14px;
     line-height: 1;
-  }
+}
 
-  .text-section p span{
+.text-section link {
+    color: var(--secundaria);
+}
+
+.text-section p span {
     font-weight: bold;
-    color: #4a0087;
+    color: var(--secundaria);
     font-size: 14px;
     line-height: 1;
-  }
+}
 
-  .text-section p span:hover{
-    color:var(--secundaria)
-  }
+.text-section p span:hover {
+    color: var(--secundaria)
+}
 
 
-  .text-section h2 {
+.text-section h2 {
     font-size: 60px;
-    color:var(--standard2);
+    color: var(--standard2);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: 'League Spartan', sans-serif; /* Fonte moderna */
-    padding: 0px; /* Espaçamento interno para separar o texto das bordas */
-    border-radius: 10px; /* Bordas arredondadas para um visual moderno */
+    font-family: 'League Spartan', sans-serif;
+    /* Fonte moderna */
+    padding: 0px;
+    /* Espaçamento interno para separar o texto das bordas */
+    border-radius: 10px;
+    /* Bordas arredondadas para um visual moderno */
     line-height: 1.2;
 }
 
 .text-section h2 span {
-    display: block; /* Cada parte do texto em um bloco separado */
-    font-family: 'League Spartan', sans-serif; /* Fonte moderna */
-    font-size: 110%; /* Tamanho da fonte para a segunda linha (ajuste conforme necessário) */
-  }
+    display: block;
+    /* Cada parte do texto em um bloco separado */
+    font-family: 'League Spartan', sans-serif;
+    /* Fonte moderna */
+    font-size: 110%;
+    /* Tamanho da fonte para a segunda linha (ajuste conforme necessário) */
+}
 
-  .form-section{
+.form-section {
     flex-basis: calc(40% - 20px);
     margin-bottom: 20px;
     padding: 40px;
-  }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background-color: #ffffff;
+}
 
-  .oi-vamos{
+
+
+.oi-vamos {
     width: 500px;
     height: auto;
     padding-bottom: 30px;
-  }
+}
 
-  @media (max-width: 768px) { /* Ajuste o valor de 'max-width' conforme necessário */
+@media (max-width: 768px) {
+
+    /* Ajuste o valor de 'max-width' conforme necessário */
     .oi-vamos {
         width: 100%;
     }
@@ -2565,13 +2738,20 @@ h5 {
 @media only screen and (max-width: 600px) {
     .container-side-contato {
         flex-direction: column;
+        width: 115%;
     }
 
     .text-section {
         margin-top: 30px;
+        padding: 50px;
     }
 
     .form-section {
-        margin-top: 20px;
+        margin-top: 50px;
+        background-color: var(--primaria);
+        width: auto;
+        border-radius: 0;
+        justify-content: center;
+        box-shadow: none;
     }
 }

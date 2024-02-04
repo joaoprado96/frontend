@@ -51,14 +51,13 @@ export default function Contato() {
     </Head>
     <div className="pagecontato">
         <div className="container-side-contato">
-          <div className="text-section" style={{ marginTop: '-90px' }}>
+          <div className="text-section" style={{ marginTop: '-150px' }}>
             <Image 
               src="/image/oi-vamos.png" 
               class="oi-vamos" 
               alt="titulo"
               width={1920} // A proporção da imagem será mantida com base nessas dimensões
               height={800}
-              layout="responsive"
             />
             <p>Tá com uma ideia genial ou quer nos dar um toque sobre algo?</p>
             <p>Me conta o que você está pensando! </p>
@@ -78,11 +77,11 @@ export default function Contato() {
             </div>
             <p style={{ marginTop: '20px', textAlign: 'justify' }}>
               Quer se tornar um parceiro e ser exposto na plataforma?<br/>
-              <Link href="/cadastro">Cadastre-se aqui!</Link>
+              <Link href="/cadastro" style={{ color: '#E5671D' }}>Cadastre-se aqui!</Link>
             </p>
           </div>
 
-          <div className="form-section card-contato">
+          <div className="form-section card-contato" style={{ marginTop: '-50px' }}>
             <form id="contactForm" className="formulario-cadastro" onSubmit={handleSubmit}>
               <label htmlFor="nome">Nome</label>
               <input type="text" id="nome" name="nome" required value={nome} onChange={(e) => setNome(e.target.value)} />
