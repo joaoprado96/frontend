@@ -4,8 +4,6 @@ import { useProgress } from '../../app/contexts/ProgressContext';
 const ProgressBar = ({ totalSteps }) => {
   const { currentStep } = useProgress();
 
-  console.log(currentStep)
-
   // Calcula a porcentagem de progresso
   const progressPercentage = ((currentStep / totalSteps) * 100).toFixed(0);
 

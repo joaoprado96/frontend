@@ -31,7 +31,7 @@ const Step4Page = () => {
   };
 
   const opcoesCulinaria = [
-    { value: "Sem informação", label: "Cozinha: Sem essa informação" },
+    { value: "Sem informação", label: "Sem essa informação" },
     { value: "Africana", label: "Africana" },
     { value: "Alemã", label: "Alemã" },
     { value: "Americana", label: "Americana" },
@@ -74,7 +74,7 @@ const Step4Page = () => {
   ];
   
   const opcoesEstiloServicos = [
-    { value: "Sem informação", label: "Estilos de Serviço: Sem essa informação" },
+    { value: "Sem informação", label: "Sem essa informação" },
     { value: "buffet", label: "Buffet" },
     { value: "à la carte", label: "À la Carte" },
     { value: "rodízio", label: "Rodízio" },
@@ -87,9 +87,28 @@ const Step4Page = () => {
     let newErrors = {};
     let messages = [];
   
+    // Validar o campo "cardapio"
     if (!cardapio) {
-      newErrors = { ...newErrors, descricao: 'Cadápio é obrigatório.' };
-      messages.push('Cadápio é obrigatório.');
+      newErrors = { ...newErrors, cardapio: 'Cardápio é obrigatório.' };
+      messages.push('Cardápio é obrigatório.');
+    }
+  
+    // Validar o campo "culinariaSelecionada"
+    if (!culinariaSelecionada) {
+      newErrors = { ...newErrors, culinaria: 'Selecione uma culinária.' };
+      messages.push('Selecione uma culinária.');
+    }
+  
+    // Validar o campo "estiloServicoSelecionado"
+    if (!estiloServicoSelecionado) {
+      newErrors = { ...newErrors, estiloServico: 'Selecione um estilo de serviço.' };
+      messages.push('Selecione um estilo de serviço.');
+    }
+  
+    // Validar o campo "premiacoes"
+    if (premiacoes.length === 0) {
+      newErrors = { ...newErrors, premiacoes: 'Adicione pelo menos uma premiação.' };
+      messages.push('Adicione pelo menos uma premiação.');
     }
   
     if (Object.keys(newErrors).length > 0) {
@@ -99,10 +118,11 @@ const Step4Page = () => {
       return false;
     }
   
-    setErrors({}); // Limpar erros se tudo estiver correto
+    setErrors({});
     setShowErrorModal(false);
     return true;
   };
+  
   
 
   const handleNext = () => {
@@ -133,6 +153,7 @@ const Step4Page = () => {
       <Form.Group>
         <Form.Label>Culinária</Form.Label>
         <Select
+          isMulti
           options={opcoesCulinaria}
           value={culinariaSelecionada}
           onChange={(selectedOption) => setCulinariaSelecionada(selectedOption)}
@@ -142,6 +163,7 @@ const Step4Page = () => {
       <Form.Group>
         <Form.Label>Estilo de Serviços</Form.Label>
         <Select
+          isMulti
           options={opcoesEstiloServicos}
           value={estiloServicoSelecionado}
           onChange={(selectedOption) => setEstiloServicoSelecionado(selectedOption)}
@@ -204,9 +226,9 @@ const Step4Page = () => {
             }}
           >
             {premiacao}
-            <button
+            <Button
               type="button" // Defina o tipo de botão como "button"
-              onClick={() => adicionarPremiacao(index)}
+              onClick={() => removerPremiacao(index)}
               style={{
                 background: 'none',
                 border: 'none',
@@ -233,7 +255,7 @@ const Step4Page = () => {
               >
                 Remover
               </span>
-            </button>
+            </Button>
 
           </div>
         ))}
