@@ -54,11 +54,11 @@ body {
     width: 100%;
     background-image: url('/image/back-6.jpg');
     /* Substitua o caminho pela localização real da sua imagem */
-  /*  background-size: cover;
+/*  background-size: cover;
     /* Ajusta o tamanho da imagem para cobrir todo o elemento */
 /*    background-position: center;
     /* Centraliza a imagem no elemento */
-  /*  background-repeat: no-repeat;
+/*  background-repeat: no-repeat;
     /* Evita repetição da imagem */
 /*}*/
 
@@ -74,7 +74,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
+}
 
 .pagedetalhes {
     display: flex;
@@ -98,10 +98,12 @@ body {
     }
 
     .pagecontato {
-        background-image: url('/image/back-6-mobile.png');
+     /*   background-image: url('/image/back-6-mobile.png');*/
+        background-image: none;
         /* Substitua o caminho pela localização real da sua imagem */
-        background-size: 100% 100%; /* Ajuste conforme necessário */
-        margin-top: 60px;
+        background-size: 100% 100%;
+        /* Ajuste conforme necessário */
+        object-fit: cover;
     }
 }
 
@@ -2654,7 +2656,7 @@ h5 {
     margin-bottom: 20px;
     padding: 20px;
     padding-right: 80px;
-    margin-top:-50px
+    margin-top: -150px;
 }
 
 .text-section p {
@@ -2708,6 +2710,7 @@ h5 {
     flex-basis: calc(40% - 20px);
     margin-bottom: 20px;
     padding: 40px;
+    margin-top: -50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -2742,16 +2745,16 @@ h5 {
     }
 
     .text-section {
-        margin-top: 30px;
+        margin-top: -20px;
         padding: 50px;
     }
 
     .form-section {
-        margin-top: 50px;
         background-color: var(--primaria);
         width: auto;
         border-radius: 0;
         justify-content: center;
         box-shadow: none;
+        margin-top: -30px;
     }
 }
