@@ -95,7 +95,7 @@ const Step3Page = () => {
       newErrors = { ...newErrors, tiposEvento: 'Pelo menos um tipo de evento deve ser selecionado.' };
       messages.push('Pelo menos um tipo de evento deve ser selecionado.');
     }
-  
+    
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setErrorMessages(messages);
@@ -131,8 +131,12 @@ const Step3Page = () => {
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
           placeholder="Descreva seu estabelecimento"
-          style={{ minHeight: "150px" }} // Defina a altura mínima desejada aqui
+          style={{ minHeight: "150px" }}
+          isInvalid={!!errors.descricao}
         />
+        <Form.Control.Feedback type="invalid">
+          {errors.descricao}
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group>
@@ -145,7 +149,9 @@ const Step3Page = () => {
           onChange={handleTipoEventoChange}
           value={tiposEvento}
           placeholder="Selecione os tipos de evento"
+          isInvalid={!!errors.tiposEvento}
         />
+        {errors.tiposEvento && <div className="text-danger">{errors.tiposEvento}</div>}
       </Form.Group>
 
       <Form.Group>
@@ -154,12 +160,14 @@ const Step3Page = () => {
           as="select"
           value={taxaEntrada}
           onChange={(e) => setTaxaEntrada(e.target.value)}
+          isInvalid={!!errors.taxaEntrada}
         >
           <option value="">Selecione o tipo de entrada</option>
           <option value="Sem informação">Sem essa informação</option>
           <option value="Gratuita">Gratuita</option>
           <option value="Paga">Paga</option>
         </Form.Control>
+        {errors.taxaEntrada && <div className="text-danger">{errors.taxaEntrada}</div>}
       </Form.Group>
 
       <Form.Group as={Row} className="align-items-center">
@@ -175,11 +183,15 @@ const Step3Page = () => {
               step="0.1"
               value={avaliacaoClientes}
               onChange={(e) => setAvaliacaoClientes(parseFloat(e.target.value))}
+              isInvalid={!!errors.avaliacaoClientes}
             />
           </Col>
           <Col sm={2} className="text-center">
             {renderStars(avaliacaoClientes)}
           </Col>
+          <Form.Control.Feedback type="invalid">
+          {errors.avaliacaoClientes}
+        </Form.Control.Feedback>
         </Form.Group>
 
       <Form.Group>
@@ -188,6 +200,7 @@ const Step3Page = () => {
           as="select"
           value={preco}
           onChange={(e) => setPreco(e.target.value)}
+          isInvalid={!!errors.preco}
         >
           <option value="">Selecione o preço</option>
           <option value="1">Até R$30,00</option>
@@ -196,6 +209,7 @@ const Step3Page = () => {
           <option value="4">De R$150 a R$300</option>
           <option value="5">Acima de R$300</option>
         </Form.Control>
+        {errors.preco && <div className="text-danger">{errors.preco}</div>}
       </Form.Group>
 
     <Form.Group>

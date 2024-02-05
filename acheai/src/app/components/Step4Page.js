@@ -147,8 +147,12 @@ const Step4Page = () => {
           value={cardapio}
           onChange={(e) => setCardapio(e.target.value)}
           placeholder="Insira aqui o link do seu cardápio"
-          style={{ minHeight: "100px" }} // Defina a altura mínima desejada aqui
+          style={{ minHeight: "100px" }}
+          isInvalid={!!errors.cardapio}
         />
+        <Form.Control.Feedback type="invalid">
+          {errors.cardapio}
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>Culinária</Form.Label>
@@ -157,7 +161,9 @@ const Step4Page = () => {
           options={opcoesCulinaria}
           value={culinariaSelecionada}
           onChange={(selectedOption) => setCulinariaSelecionada(selectedOption)}
+          isInvalid={!!errors.culinariaSelecionada}
         />
+        {errors.culinariaSelecionada && <div className="text-danger">{errors.culinariaSelecionada}</div>}
       </Form.Group>
 
       <Form.Group>
@@ -167,8 +173,11 @@ const Step4Page = () => {
           options={opcoesEstiloServicos}
           value={estiloServicoSelecionado}
           onChange={(selectedOption) => setEstiloServicoSelecionado(selectedOption)}
+          isInvalid={!!errors.estiloServicoSelecionado}
         />
+        {errors.estiloServicoSelecionado && <div className="text-danger">{errors.estiloServicoSelecionado}</div>}
       </Form.Group>
+
       <Form.Group>
         <Form.Label>Premiações</Form.Label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -184,7 +193,11 @@ const Step4Page = () => {
               border: '1px solid #ccc',
               borderRadius: '5px',
             }}
-          />
+            isInvalid={!!errors.premiacoes}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.premiacoes}
+            </Form.Control.Feedback>
           <Button
             type="button" // Defina o tipo de botão como "button"
             onClick={adicionarPremiacao}
