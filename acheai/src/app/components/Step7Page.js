@@ -1,10 +1,12 @@
-import { useProgress } from '../contexts/ProgressContext';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import React from 'react';
+import { useProgress } from '../../app/contexts/ProgressContext';
 import Select from 'react-select';
+import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
+import { FaRegTrashAlt, FaPlusCircle } from 'react-icons/fa'; // Importe os ícones diretamente
 
 const opcoesEstilosMusicais = [
-  { value: 'Sem informação', label: 'Estilos musicais: Sem essa informação' },
+  { value: 'Sem informação', label: 'Sem essa informação' },
   { value: 'Axé', label: 'Axé' },
   { value: 'Black Music', label: 'Black Music' },
   { value: 'Blues', label: 'Blues' },
@@ -52,7 +54,7 @@ const opcoesEstilosMusicais = [
 ];
 
 const opcoesLocais = [
-  { value: 'Sem informação', label: 'Tipo de local: Sem essa informação' },
+  { value: 'Sem informação', label: 'Sem essa informação' },
   { value: 'Padaria', label: 'Padaria' },
   { value: 'Restaurante', label: 'Restaurante' },
   { value: 'Lanchonete', label: 'Lanchonete' },
@@ -72,7 +74,7 @@ const opcoesLocais = [
 ];
 
 const opcoesHobbies = [
-  { value: 'Sem informação', label: 'Hobbies: Sem essa informação' },
+  { value: 'Sem informação', label: 'Sem essa informação' },
   { value: 'jogos de tabuleiro', label: 'Jogos de Tabuleiro' },
   { value: 'jogos de video game', label: 'Jogos de Video Game' },
   { value: 'leitura', label: 'Leitura' },
@@ -84,7 +86,7 @@ const opcoesHobbies = [
 ];
 
 const opcoesAmbientes = [
-  { value: 'Sem informação', label: 'Ambientes: Sem essa informação' },
+  { value: 'Sem informação', label: 'Sem essa informação' },
   { value: 'rooftop', label: 'Rooftop' },
   { value: 'ar livre', label: 'Ar livre' },
   { value: 'fumódromo', label: 'Fumódromo' },
@@ -100,61 +102,147 @@ const opcoesAmbientes = [
   { value: 'retro', label: 'Retro' },
 ];
 
-const opcoesTiposCartao = [
-  { value: 'Sem informação', label: 'Formas de pagamento: Sem essa informação' },
-  { value: 'dinheiro', label: 'Dinheiro' },
-  { value: 'american express', label: 'American Express' },
-  { value: 'banricompras', label: 'Banricompras' },
-  { value: 'ben refeição', label: 'Ben Refeição' },
-  { value: 'cooper card', label: 'Cooper Card' },
-  { value: 'cheque', label: 'Cheque' },
-  { value: 'diners', label: 'Diners' },
-  { value: 'elo', label: 'Elo' },
-  { value: 'hipercard', label: 'Hipercard' },
-  { value: 'goodcard', label: 'Goodcard' },
-  { value: 'mastercard', label: 'Mastercard' },
-  { value: 'refeisul', label: 'Refeisul' },
-  { value: 'ticket', label: 'Ticket' },
-  { value: 'card', label: 'Card' },
-  { value: 'vale alelo refeição', label: 'Vale Alelo Refeição' },
-  { value: 'verocard', label: 'Verocard' },
-  { value: 'visa', label: 'Visa' },
-  { value: 'vr refeição', label: 'VR Refeição' },
-  { value: 'sodexo', label: 'Sodexo' },
-  { value: 'green card', label: 'Green Card' },
-  { value: 'senff', label: 'Senff' },
-  { value: 'cabal', label: 'Cabal' },
-  { value: 'sorocred', label: 'Sorocred' },
-  { value: 'sicredi', label: 'Sicredi' },
-  { value: 'aura', label: 'Aura' },
-  { value: 'discover', label: 'Discover' },
-  { value: 'jcb', label: 'JCB' },
-  { value: 'unionpay', label: 'UnionPay' },
-  { value: 'maestro', label: 'Maestro' },
-  { value: 'alelo cultura', label: 'Alelo Cultura' },
-  { value: 'vr benefícios', label: 'VR Benefícios' },
-  { value: 'vale cultura', label: 'Vale Cultura' },
-  { value: 'paypal', label: 'PayPal' },
-  { value: 'bitcoin', label: 'Bitcoin' },
-  { value: 'pix', label: 'Pix' },
-];
-
-
 const Step7Page = () => {
-  const { currentStep, handleNextStep, handlePreviousStep } = useProgress();
+  const { handleNextStep, handlePreviousStep } = useProgress();
+  const [formData, setFormData] = useState({
+    hobbies: '',
+    ambientes: '',
+    local: '',
+    estilosMusicais: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessages, setErrorMessages] = useState([]);
+
+
+  const validateFields = () => {
+    let newErrors = {};
+    let messages = [];
+  
+    if (!formData.hobbies || formData.hobbies === "Sem informação") {
+      newErrors.hobbies = 'Campo obrigatório.';
+      messages.push('Hobbies: Campo obrigatório.');
+    }
+
+    if (!formData.ambientes || formData.ambientes === "Sem informação") {
+      newErrors.ambientes = 'Campo obrigatório.';
+      messages.push('Tipo de Ambiente: Campo obrigatório.');
+    }
+
+    if (!formData.local || formData.local === "Sem informação") {
+      newErrors.local = 'Campo obrigatório.';
+      messages.push('Tipo de Local: Campo obrigatório.');
+    }
+
+    if (!formData.estilosMusicais || formData.estilosMusicais === "Sem informação") {
+      newErrors.estilosMusicais = 'Campo obrigatório.';
+      messages.push('Estilos Musicais: Campo obrigatório.');
+    }
+  
+    // Verifica se existem erros
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setErrorMessages(messages);
+      setShowErrorModal(true);
+      return false;
+    }
+  
+    // Se passou por todas as validações
+    setShowErrorModal(false);
+    setErrors({});
+    return true;
+  };
+  
+  const handleNext = () => {
+    if (validateFields()) {
+      handleNextStep();
+    }
+  };
   return (
     <>
     <Head>
       <title>Contato - AcheAi</title>
     </Head>
     <div className='formulario-cadastro'>
-      <br/><br/><br/>
-      <h1>Passo 7: Links</h1>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5px' }}>
-        <button className="btn mt-3" onClick={handlePreviousStep}>Anterior</button>
-        <button className="btn mt-3" onClick={handleNextStep}>Próximo</button>
-      </div>
+      <h1>Passo 7: Ambiente</h1>
+      <Form>
+          <Form.Group controlId="hobbies">
+            <Form.Label>Hobbies</Form.Label>
+            <Select
+              options={opcoesHobbies} // Certifique-se de que este está definido corretamente
+              value={opcoesHobbies.filter(opcao => formData.hobbies.includes(opcao.value))}
+              onChange={options => setFormData({ ...formData, hobbies: options.map(option => option.value) })}
+              isMulti
+              isLoading
+              isInvalid={!!errors.hobbies}
+            />
+            {/* Feedback de validação customizado, como mostrado acima */}
+            {errors.hobbies && <div className="text-danger">{errors.hobbies}</div>}
+          </Form.Group>
+
+          <Form.Group controlId="ambientes">
+            <Form.Label>Tipos de Ambiente</Form.Label>
+            <Select
+              options={opcoesAmbientes} // Certifique-se de que este está definido corretamente
+              value={opcoesAmbientes.filter(opcao => formData.ambientes.includes(opcao.value))}
+              onChange={options => setFormData({ ...formData, ambientes: options.map(option => option.value) })}
+              isMulti
+              isLoading
+              isInvalid={!!errors.ambientes}
+            />
+            {/* Feedback de validação customizado, como mostrado acima */}
+            {errors.ambientes && <div className="text-danger">{errors.ambientes}</div>}
+          </Form.Group>
+
+          <Form.Group controlId="locais">
+            <Form.Label>Tipos de Locais</Form.Label>
+            <Select
+              options={opcoesLocais} // Certifique-se de que este está definido corretamente
+              value={opcoesLocais.filter(opcao => formData.local.includes(opcao.value))}
+              onChange={options => setFormData({ ...formData, local: options.map(option => option.value) })}
+              isMulti
+              isLoading
+              isInvalid={!!errors.local}
+            />
+            {/* Feedback de validação customizado, como mostrado acima */}
+            {errors.local && <div className="text-danger">{errors.local}</div>}
+          </Form.Group>
+
+          <Form.Group controlId="estilos">
+            <Form.Label>Estilos Músicais</Form.Label>
+            <Select
+              options={opcoesEstilosMusicais} // Certifique-se de que este está definido corretamente
+              value={opcoesEstilosMusicais.filter(opcao => formData.estilosMusicais.includes(opcao.value))}
+              onChange={options => setFormData({ ...formData, estilosMusicais: options.map(option => option.value) })}
+              isMulti
+              isLoading
+              isInvalid={!!errors.estilosMusicais}
+            />
+            {/* Feedback de validação customizado, como mostrado acima */}
+            {errors.estilosMusicais && <div className="text-danger">{errors.estilosMusicais}</div>}
+          </Form.Group>
+
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+          <Button variant="secondary" onClick={handlePreviousStep}>Anterior</Button>
+          <Button variant="primary" onClick={handleNext}>Próximo</Button>
+        </div>
+      </Form>
     </div>
+    <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
+        <Modal.Header>
+          <Modal.Title>Preenchimento obrigatório</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {errorMessages.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

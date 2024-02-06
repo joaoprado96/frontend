@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProgressProvider, useProgress } from '../../app/contexts/ProgressContext';
 import ProgressBar from '../../app/components/ProgressBar'; // Verifique o caminho para o seu ambiente
+import Step0Page from '../../app/components/Step0Page';
 import Step1Page from '../../app/components/Step1Page';
 import Step2Page from '../../app/components/Step2Page';
 import Step3Page from '../../app/components/Step3Page';
@@ -18,11 +19,14 @@ const Cadastro = () => {
   const { step } = router.query; // Obtém o valor do parâmetro 'step' da URL
 
   // Ajusta o valor de 'step' para 1 se for 'undefined' ou não puder ser convertido em um número
-  const currentStep = parseInt(step) || 1;
+  const currentStep = parseInt(step) || 0;
 
   let content;
 
   switch (currentStep) {
+    case 0:
+        content = <Step0Page />;
+        break;
     case 1:
         content = <Step1Page />;
         break;

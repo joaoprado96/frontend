@@ -5,6 +5,58 @@ import Select from 'react-select';
 import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
 import { FaRegTrashAlt, FaPlusCircle } from 'react-icons/fa'; // Importe os ícones diretamente
 
+const opcoesCulinaria = [
+  { value: "Sem informação", label: "Sem essa informação" },
+  { value: "Africana", label: "Africana" },
+  { value: "Alemã", label: "Alemã" },
+  { value: "Americana", label: "Americana" },
+  { value: "Árabe", label: "Árabe" },
+  { value: "Brasileira", label: "Brasileira" },
+  { value: "Baiana", label: "Baiana" },
+  { value: "Nordestina", label: "Nordestina" },
+  { value: "Gaúcha", label: "Gaúcha" },
+  { value: "Amazônica", label: "Amazônica" },
+  { value: "Mineira", label: "Mineira" },
+  { value: "Paraense", label: "Paraense" },
+  { value: "Chinesa", label: "Chinesa" },
+  { value: "Contemporânea", label: "Contemporânea" },
+  { value: "Coreana", label: "Coreana" },
+  { value: "Espanhola", label: "Espanhola" },
+  { value: "Francesa", label: "Francesa" },
+  { value: "Grega", label: "Grega" },
+  { value: "Indiana", label: "Indiana" },
+  { value: "Italiana", label: "Italiana" },
+  { value: "Japonesa", label: "Japonesa" },
+  { value: "Mediterrânea", label: "Mediterrânea" },
+  { value: "Mexicana", label: "Mexicana" },
+  { value: "Portuguesa", label: "Portuguesa" },
+  { value: "Tailandesa", label: "Tailandesa" },
+  { value: "Turca", label: "Turca" },
+  { value: "Vegetariana", label: "Vegetariana" },
+  { value: "Vegana", label: "Vegana" },
+  { value: "Mongol", label: "Mongol" },
+  { value: "Filipina", label: "Filipina" },
+  { value: "Irlandesa", label: "Irlandesa" },
+  { value: "Marroquina", label: "Marroquina" },
+  { value: "Peruana", label: "Peruana" },
+  { value: "Russa", label: "Russa" },
+  { value: "Sul-africana", label: "Sul-africana" },
+  { value: "Vietnamita", label: "Vietnamita" },
+  { value: "Cubana", label: "Cubana" },
+  { value: "Havaiana", label: "Havaiana" },
+  { value: "Polonesa", label: "Polonesa" },
+  { value: "Tibetana", label: "Tibetana" },
+];
+
+const opcoesEstiloServicos = [
+  { value: "Sem informação", label: "Sem essa informação" },
+  { value: "buffet", label: "Buffet" },
+  { value: "à la carte", label: "À la Carte" },
+  { value: "rodízio", label: "Rodízio" },
+  { value: "serviço de entrega", label: "Serviço de Entrega" },
+  { value: "self-service", label: "Self-Service" },
+  { value: "drive-thru", label: "Drive-Thru" },
+];
 
 const Step4Page = () => {
   const { handleNextStep, handlePreviousStep } = useProgress();
@@ -29,59 +81,6 @@ const Step4Page = () => {
     novaListaPremiacoes.splice(index, 1);
     setPremiacoes(novaListaPremiacoes);
   };
-
-  const opcoesCulinaria = [
-    { value: "Sem informação", label: "Sem essa informação" },
-    { value: "Africana", label: "Africana" },
-    { value: "Alemã", label: "Alemã" },
-    { value: "Americana", label: "Americana" },
-    { value: "Árabe", label: "Árabe" },
-    { value: "Brasileira", label: "Brasileira" },
-    { value: "Baiana", label: "Baiana" },
-    { value: "Nordestina", label: "Nordestina" },
-    { value: "Gaúcha", label: "Gaúcha" },
-    { value: "Amazônica", label: "Amazônica" },
-    { value: "Mineira", label: "Mineira" },
-    { value: "Paraense", label: "Paraense" },
-    { value: "Chinesa", label: "Chinesa" },
-    { value: "Contemporânea", label: "Contemporânea" },
-    { value: "Coreana", label: "Coreana" },
-    { value: "Espanhola", label: "Espanhola" },
-    { value: "Francesa", label: "Francesa" },
-    { value: "Grega", label: "Grega" },
-    { value: "Indiana", label: "Indiana" },
-    { value: "Italiana", label: "Italiana" },
-    { value: "Japonesa", label: "Japonesa" },
-    { value: "Mediterrânea", label: "Mediterrânea" },
-    { value: "Mexicana", label: "Mexicana" },
-    { value: "Portuguesa", label: "Portuguesa" },
-    { value: "Tailandesa", label: "Tailandesa" },
-    { value: "Turca", label: "Turca" },
-    { value: "Vegetariana", label: "Vegetariana" },
-    { value: "Vegana", label: "Vegana" },
-    { value: "Mongol", label: "Mongol" },
-    { value: "Filipina", label: "Filipina" },
-    { value: "Irlandesa", label: "Irlandesa" },
-    { value: "Marroquina", label: "Marroquina" },
-    { value: "Peruana", label: "Peruana" },
-    { value: "Russa", label: "Russa" },
-    { value: "Sul-africana", label: "Sul-africana" },
-    { value: "Vietnamita", label: "Vietnamita" },
-    { value: "Cubana", label: "Cubana" },
-    { value: "Havaiana", label: "Havaiana" },
-    { value: "Polonesa", label: "Polonesa" },
-    { value: "Tibetana", label: "Tibetana" },
-  ];
-  
-  const opcoesEstiloServicos = [
-    { value: "Sem informação", label: "Sem essa informação" },
-    { value: "buffet", label: "Buffet" },
-    { value: "à la carte", label: "À la Carte" },
-    { value: "rodízio", label: "Rodízio" },
-    { value: "serviço de entrega", label: "Serviço de Entrega" },
-    { value: "self-service", label: "Self-Service" },
-    { value: "drive-thru", label: "Drive-Thru" },
-  ];
   
   const validateFields = () => {
     let newErrors = {};
@@ -158,6 +157,7 @@ const Step4Page = () => {
         <Form.Label>Culinária</Form.Label>
         <Select
           isMulti
+          isLoading
           options={opcoesCulinaria}
           value={culinariaSelecionada}
           onChange={(selectedOption) => setCulinariaSelecionada(selectedOption)}
@@ -170,6 +170,7 @@ const Step4Page = () => {
         <Form.Label>Estilo de Serviços</Form.Label>
         <Select
           isMulti
+          isLoading
           options={opcoesEstiloServicos}
           value={estiloServicoSelecionado}
           onChange={(selectedOption) => setEstiloServicoSelecionado(selectedOption)}

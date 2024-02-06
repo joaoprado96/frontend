@@ -6,7 +6,7 @@ import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
 import { FaRegTrashAlt, FaPlusCircle } from 'react-icons/fa'; // Importe os ícones diretamente
 
 const opcoesAcessibilidade = [
-  { value: "Sem informação", label: "Acessibilidade: Sem essa informação" },
+  { value: "Sem informação", label: "Sem essa informação" },
   { value: "Banheiro acessível", label: "Banheiro acessível" },
   { value: "Cardápio em braile", label: "Cardápio em braile" },
   { value: "Entrada de cão-guia", label: "Entrada de cão-guia" },
@@ -172,6 +172,7 @@ const Step5Page = () => {
           <Form.Label>Música ao Vivo</Form.Label>
           <Select
             name="musica"
+            isLoading
             options={opcoesMusica}
             value={opcoesMusica.find(option => option.value === formData.musica)}
             onChange={handleChangeSelect}
@@ -186,6 +187,7 @@ const Step5Page = () => {
           <Form.Label>Estacionamento</Form.Label>
           <Select
             name="estacionamento"
+            isLoading
             options={opcoesEstacionamento}
             value={opcoesEstacionamento.find(option => option.value === formData.estacionamento)}
             onChange={handleChangeSelect}
@@ -200,6 +202,7 @@ const Step5Page = () => {
           <Form.Label>Espaço Kids</Form.Label>
           <Select
             name="kids"
+            isLoading
             options={opcoesGenericas}
             value={opcoesGenericas.find(option => option.value === formData.kids)}
             onChange={handleChangeSelect}
@@ -212,6 +215,7 @@ const Step5Page = () => {
           <Form.Label>Pet Friendly</Form.Label>
           <Select
             name="pet"
+            isLoading
             options={opcoesGenericas}
             value={opcoesGenericas.find(option => option.value === formData.pet)}
             onChange={handleChangeSelect}
@@ -224,6 +228,7 @@ const Step5Page = () => {
           <Form.Label>Gluten Free</Form.Label>
           <Select
             name="glutenfree"
+            isLoading
             options={opcoesGenericas}
             value={opcoesGenericas.find(option => option.value === formData.glutenfree)}
             onChange={handleChangeSelect}
@@ -237,6 +242,7 @@ const Step5Page = () => {
           <Form.Label>Lactose Free</Form.Label>
           <Select
             name="lactosefree"
+            isLoading
             options={opcoesGenericas}
             value={opcoesGenericas.find(option => option.value === formData.lactosefree)}
             onChange={(selectedOption) => setFormData({ ...formData, lactosefree: selectedOption ? selectedOption.value : '' })}
@@ -267,6 +273,7 @@ const Step5Page = () => {
             value={opcoesAcessibilidade.filter(opcao => formData.acessibilidade.includes(opcao.value))}
             onChange={options => setFormData({ ...formData, acessibilidade: options.map(option => option.value) })}
             isMulti
+            isLoading
             isInvalid={!!errors.acessibilidade}
           />
           {/* Feedback de validação customizado, como mostrado acima */}
@@ -280,15 +287,19 @@ const Step5Page = () => {
       </Form>
     </div>
   
-      <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Erros de Validação</Modal.Title>
+    <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
+        <Modal.Header>
+          <Modal.Title>Preenchimento obrigatório</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {errorMessages.map((message, index) => <p key={index}>{message}</p>)}
+          {errorMessages.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>Fechar</Button>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>
+            Fechar
+          </Button>
         </Modal.Footer>
       </Modal>
   </>

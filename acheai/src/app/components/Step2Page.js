@@ -287,6 +287,7 @@ const Step2Page = () => {
       <Form.Label>Zona</Form.Label>
       <ReactSelect
         classNamePrefix="react-select"
+        isLoading
         options={zonaOptions}
         value={zonaOptions.find(option => option.value === zona)}
         onChange={(selectedOption) => setZona(selectedOption ? selectedOption.value : '')}

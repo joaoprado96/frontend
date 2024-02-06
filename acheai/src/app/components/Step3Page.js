@@ -144,6 +144,7 @@ const Step3Page = () => {
         <Select
           id="multiselectTiposEvento"
           isMulti
+          isLoading
           options={tiposEventoOptions}
           classNamePrefix="select"
           onChange={handleTipoEventoChange}

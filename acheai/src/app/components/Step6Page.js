@@ -21,275 +21,194 @@ const opcoesLinhasMetro = [
   { value: 'Linha 15 (Prata)', label: 'Linha 15 (Prata)' },
 ];
 
-const opcoesEstacoesMetro = [
-  {
-    value: 'Sem informação',
-    label: 'Estação: Sem essa informação',
-  },
-  {
-    value: 'Linha 1 (Azul)',
-    label: 'Linha 1 (Azul)',
-    stations: [
-      'Jabaquara',
-      'Conceição',
-      'São Judas',
-      'Saúde',
-      'Praça da Árvore',
-      'Santa Cruz',
-      'Vila Mariana',
-      'Ana Rosa',
-      'Paraíso',
-      'Vergueiro',
-      'São Joaquim',
-      'Japão-Liberdade',
-      'Sé',
-      'São Bento',
-      'Luz',
-      'Tiradentes',
-      'Armênia',
-      'Portuguesa-Tietê',
-      'Carandiru',
-      'Santana',
-      'Jardim São Paulo-Ayrton Senna',
-      'Parada Inglesa',
-      'Tucuruvi',
-    ],
-  },
-  {
-    value: 'Linha 2 (Verde)',
-    label: 'Linha 2 (Verde)',
-    stations: [
-      'Vila Prudente',
-      'Tamanduateí',
-      'Sacomã',
-      'Alto do Ipiranga',
-      'Santos-Imigrantes',
-      'Chácara Klabin',
-      'Ana Rosa',
-      'Paraíso',
-      'Brigadeiro',
-      'Trianon-Masp',
-      'Consolação',
-      'Clínicas',
-      'S. N. Sra. de Fátima-Sumaré',
-      'Vila Madalena',
-    ],
-  },
-  {
-    value: 'Linha 3 (Vermelha)',
-    label: 'Linha 3 (Vermelha)',
-    stations: [
-      'Corinthians-Itaquera',
-      'Artur Alvim',
-      'Patriarca-Vila Ré',
-      'Guilhermina-Esperança',
-      'Vila Matilde',
-      'Penha',
-      'Carrão-Assaí Atacadista',
-      'Tatuapé',
-      'Belém',
-      'Bresser-Mooca',
-      'Brás',
-      'Pedro II',
-      'Sé',
-      'Anhangabaú',
-      'República',
-      'Santa Cecília',
-      'Marechal Deodoro',
-      'Palmeiras-Barra Funda',
-    ],
-  },
-  {
-    value: 'Linha 4 (Amarela)',
-    label: 'Linha 4 (Amarela)',
-    stations: [
-      'Luz',
-      'República',
-      'Higienópolis-Mackenzie',
-      'Paulista',
-      'Oscar Freire',
-      'Fradique Coutinho',
-      'Faria Lima',
-      'Pinheiros',
-      'Butantã',
-      'São Paulo-Morumbi',
-      'Vila Sônia',
-    ],
-  },
-  {
-    value: 'Linha 5 (Lilás)',
-    label: 'Linha 5 (Lilás)',
-    stations: [
-      'Capão Redondo',
-      'Campo Limpo',
-      'Vila das Belezas',
-      'Giovanni Gronchi',
-      'Santo Amaro',
-      'Largo Treze',
-      'Adolfo Pinheiro',
-      'Alto da Boa Vista',
-      'Borba Gato',
-      'Brooklin',
-      'Campo Belo',
-      'Eucaliptos',
-      'Moema',
-      'AACD-Servidor',
-      'Hospital São Paulo',
-      'Santa Cruz',
-      'Chácara Klabin',
-    ],
-  },
-  {
-    value: 'Linha 7 (Rubi)',
-    label: 'Linha 7 (Rubi)',
-    stations: [
-      'Brás',
-      'Luz',
-      'Palmeiras-Barra Funda',
-      'Água Branca',
-      'Lapa',
-      'Piqueri',
-      'Pirituba',
-      'Vila Clarice',
-      'Vila Aurora',
-      'Perus',
-      'Caieiras',
-      'Franco da Rocha',
-      'Baltazar Fidélis',
-    ],
-  },
-  {
-    value: 'Linha 8 (Diamante)',
-    label: 'Linha 8 (Diamante)',
-    stations: [
-      'Júlio Prestes',
-      'Palmeiras-Barra Funda',
-      'Lapa',
-      'Domingos de Moraes',
-      'Imperatriz Leopoldina',
-      'Presidente Altino',
-      'Osasco',
-      'Comandante Sampaio',
-      'Quitaúna',
-      'General Miguel Costa',
-      'Carapicuíba',
-      'Santa Terezinha',
-      'Antônio João',
-      'Barueri',
-      'Jardim Belval',
-      'Jardim Silveira',
-      'Jandira',
-      'Sagrado Coração',
-      'Engenheiro Cardoso',
-      'Itapevi',
-      'Amador Bueno',
-    ],
-  },
-  {
-    value: 'Linha 9 (Esmeralda)',
-    label: 'Linha 9 (Esmeralda)',
-    stations: [
-      'Osasco',
-      'Presidente Altino',
-      'Ceasa',
-      'Villa-Lobos-Jaguaré',
-      'Cidade Universitária',
-      'Pinheiros',
-      'Hebraica-Rebouças',
-      'Cidade Jardim',
-      'Vila Olímpia',
-      'Berrini',
-      'Morumbi',
-      'Granja Julieta',
-      'Santo Amaro',
-      'Socorro',
-      'Jurubatuba',
-      'Autódromo',
-      'Interlagos',
-      'Grajaú',
-    ],
-  },
-  {
-    value: 'Linha 10 (Turquesa)',
-    label: 'Linha 10 (Turquesa)',
-    stations: [
-      'Brás',
-      'Juventus Mooca',
-      'Ipiranga',
-      'Tamanduateí',
-      'São Caetano do Sul',
-      'Utinga',
-      'Pref Saladino',
-      'Capuava',
-      'Mauá',
-      'Guapituba',
-      'Ribeirão Pires',
-      'Rio Grande da Serra',
-    ],
-  },
-  {
-    value: 'Linha 11 (Coral)',
-    label: 'Linha 11 (Coral)',
-    stations: [
-      'Brás',
-      'Juventus Mooca',
-      'Ipiranga',
-      'Tamanduateí',
-      'São Caetano do Sul',
-      'Utinga',
-      'Pref Saladino',
-      'Capuava',
-      'Mauá',
-      'Guapituba',
-      'Ribeirão Pires',
-      'Rio Grande da Serra',
-    ],
-  },
-  {
-    value: 'Linha 12 (Safira)',
-    label: 'Linha 12 (Safira)',
-    stations: [
-      'Brás',
-      'Tatuapé',
-      'Engº Goulart',
-      'Usp Leste',
-      'Comendador Ermelino',
-      'São Miguel Paulista',
-      'Jardim Helena Vila Mara',
-      'Itaim Paulista',
-      'Jardim Romano',
-      'Eng Manoel Feio',
-      'Itaquaquecetuba',
-      'Aracaré',
-      'Calmon Viana',
-    ],
-  },
-  {
-    value: 'Linha 13 (Jade)',
-    label: 'Linha 13 (Jade)',
-    stations: [
-      'Aeroporto-Guarulhos',
-      'Guarulhos-Cecap',
-      'Eng. Goulart',
-    ],
-  },
-  {
-    value: 'Linha 15 (Prata)',
-    label: 'Linha 15 (Prata)',
-    stations: [
-      'Vila Prudente',
-      'Oratório',
-      'São Lucas',
-      'Camilo Haddad',
-      'Vila Tolstói',
-      'Vila União',
-      'Jardim Planalto',
-      'Sapopemba',
-      'Fazenda da Juta',
-      'São Mateus',
-      'Jardim Colonial',
-    ],
-  },
+const opcoesestacoesMetro = [
+  { value: "Jabaquara", label: "Jabaquara" },
+  { value: "Conceição", label: "Conceição" },
+  { value: "São Judas", label: "São Judas" },
+  { value: "Saúde", label: "Saúde" },
+  { value: "Praça da Árvore", label: "Praça da Árvore" },
+  { value: "Santa Cruz", label: "Santa Cruz" },
+  { value: "Vila Mariana", label: "Vila Mariana" },
+  { value: "Ana Rosa", label: "Ana Rosa" },
+  { value: "Paraíso", label: "Paraíso" },
+  { value: "Vergueiro", label: "Vergueiro" },
+  { value: "São Joaquim", label: "São Joaquim" },
+  { value: "Japão-Liberdade", label: "Japão-Liberdade" },
+  { value: "Sé", label: "Sé" },
+  { value: "São Bento", label: "São Bento" },
+  { value: "Luz", label: "Luz" },
+  { value: "Tiradentes", label: "Tiradentes" },
+  { value: "Armênia", label: "Armênia" },
+  { value: "Portuguesa-Tietê", label: "Portuguesa-Tietê" },
+  { value: "Carandiru", label: "Carandiru" },
+  { value: "Santana", label: "Santana" },
+  { value: "Jardim São Paulo-Ayrton Senna", label: "Jardim São Paulo-Ayrton Senna" },
+  { value: "Parada Inglesa", label: "Parada Inglesa" },
+  { value: "Tucuruvi", label: "Tucuruvi" },
+  { value: "Vila Prudente", label: "Vila Prudente" },
+  { value: "Tamanduateí", label: "Tamanduateí" },
+  { value: "Sacomã", label: "Sacomã" },
+  { value: "Alto do Ipiranga", label: "Alto do Ipiranga" },
+  { value: "Santos-Imigrantes", label: "Santos-Imigrantes" },
+  { value: "Chácara Klabin", label: "Chácara Klabin" },
+  { value: "Ana Rosa", label: "Ana Rosa" },
+  { value: "Paraíso", label: "Paraíso" },
+  { value: "Brigadeiro", label: "Brigadeiro" },
+  { value: "Trianon-Masp", label: "Trianon-Masp" },
+  { value: "Consolação", label: "Consolação" },
+  { value: "Clínicas", label: "Clínicas" },
+  { value: "S. N. Sra. de Fátima-Sumaré", label: "S. N. Sra. de Fátima-Sumaré" },
+  { value: "Vila Madalena", label: "Vila Madalena" },
+  { value: "Corinthians-Itaquera", label: "Corinthians-Itaquera" },
+  { value: "Artur Alvim", label: "Artur Alvim" },
+  { value: "Patriarca-Vila Ré", label: "Patriarca-Vila Ré" },
+  { value: "Guilhermina-Esperança", label: "Guilhermina-Esperança" },
+  { value: "Vila Matilde", label: "Vila Matilde" },
+  { value: "Penha", label: "Penha" },
+  { value: "Carrão-Assaí Atacadista", label: "Carrão-Assaí Atacadista" },
+  { value: "Tatuapé", label: "Tatuapé" },
+  { value: "Belém", label: "Belém" },
+  { value: "Bresser-Mooca", label: "Bresser-Mooca" },
+  { value: "Brás", label: "Brás" },
+  { value: "Pedro II", label: "Pedro II" },
+  { value: "Sé", label: "Sé" },
+  { value: "Anhangabaú", label: "Anhangabaú" },
+  { value: "República", label: "República" },
+  { value: "Santa Cecília", label: "Santa Cecília" },
+  { value: "Marechal Deodoro", label: "Marechal Deodoro" },
+  { value: "Palmeiras-Barra Funda", label: "Palmeiras-Barra Funda" },
+  { value: "Luz", label: "Luz" },
+  { value: "República", label: "República" },
+  { value: "Higienópolis-Mackenzie", label: "Higienópolis-Mackenzie" },
+  { value: "Paulista", label: "Paulista" },
+  { value: "Oscar Freire", label: "Oscar Freire" },
+  { value: "Fradique Coutinho", label: "Fradique Coutinho" },
+  { value: "Faria Lima", label: "Faria Lima" },
+  { value: "Pinheiros", label: "Pinheiros" },
+  { value: "Butantã", label: "Butantã" },
+  { value: "São Paulo-Morumbi", label: "São Paulo-Morumbi" },
+  { value: "Vila Sônia", label: "Vila Sônia" },
+  { value: "Capão Redondo", label: "Capão Redondo" },
+  { value: "Campo Limpo", label: "Campo Limpo" },
+  { value: "Vila das Belezas", label: "Vila das Belezas" },
+  { value: "Giovanni Gronchi", label: "Giovanni Gronchi" },
+  { value: "Santo Amaro", label: "Santo Amaro" },
+  { value: "Largo Treze", label: "Largo Treze" },
+  { value: "Adolfo Pinheiro", label: "Adolfo Pinheiro" },
+  { value: "Alto da Boa Vista", label: "Alto da Boa Vista" },
+  { value: "Borba Gato", label: "Borba Gato" },
+  { value: "Brooklin", label: "Brooklin" },
+  { value: "Campo Belo", label: "Campo Belo" },
+  { value: "Eucaliptos", label: "Eucaliptos" },
+  { value: "Moema", label: "Moema" },
+  { value: "AACD-Servidor", label: "AACD-Servidor" },
+  { value: "Hospital São Paulo", label: "Hospital São Paulo" },
+  { value: "Santa Cruz", label: "Santa Cruz" },
+  { value: "Chácara Klabin", label: "Chácara Klabin" },
+  { value: "Brás", label: "Brás" },
+  { value: "Luz", label: "Luz" },
+  { value: "Palmeiras-Barra Funda", label: "Palmeiras-Barra Funda" },
+  { value: "Água Branca", label: "Água Branca" },
+  { value: "Lapa", label: "Lapa" },
+  { value: "Piqueri", label: "Piqueri" },
+  { value: "Pirituba", label: "Pirituba" },
+  { value: "Vila Clarice", label: "Vila Clarice" },
+  { value: "Vila Aurora", label: "Vila Aurora" },
+  { value: "Perus", label: "Perus" },
+  { value: "Caieiras", label: "Caieiras" },
+  { value: "Franco da Rocha", label: "Franco da Rocha" },
+  { value: "Baltazar Fidélis", label: "Baltazar Fidélis" },
+  { value: "Júlio Prestes", label: "Júlio Prestes" },
+  { value: "Palmeiras-Barra Funda", label: "Palmeiras-Barra Funda" },
+  { value: "Lapa", label: "Lapa" },
+  { value: "Domingos de Moraes", label: "Domingos de Moraes" },
+  { value: "Imperatriz Leopoldina", label: "Imperatriz Leopoldina" },
+  { value: "Presidente Altino", label: "Presidente Altino" },
+  { value: "Osasco", label: "Osasco" },
+  { value: "Comandante Sampaio", label: "Comandante Sampaio" },
+  { value: "Quitaúna", label: "Quitaúna" },
+  { value: "General Miguel Costa", label: "General Miguel Costa" },
+  { value: "Carapicuíba", label: "Carapicuíba" },
+  { value: "Santa Terezinha", label: "Santa Terezinha" },
+  { value: "Antônio João", label: "Antônio João" },
+  { value: "Barueri", label: "Barueri" },
+  { value: "Jardim Belval", label: "Jardim Belval" },
+  { value: "Jardim Silveira", label: "Jardim Silveira" },
+  { value: "Jandira", label: "Jandira" },
+  { value: "Sagrado Coração", label: "Sagrado Coração" },
+  { value: "Engenheiro Cardoso", label: "Engenheiro Cardoso" },
+  { value: "Itapevi", label: "Itapevi" },
+  { value: "Amador Bueno", label: "Amador Bueno" },
+  { value: "Osasco", label: "Osasco" },
+  { value: "Presidente Altino", label: "Presidente Altino" },
+  { value: "Ceasa", label: "Ceasa" },
+  { value: "Villa-Lobos-Jaguaré", label: "Villa-Lobos-Jaguaré" },
+  { value: "Cidade Universitária", label: "Cidade Universitária" },
+  { value: "Pinheiros", label: "Pinheiros" },
+  { value: "Hebraica-Rebouças", label: "Hebraica-Rebouças" },
+  { value: "Cidade Jardim", label: "Cidade Jardim" },
+  { value: "Vila Olímpia", label: "Vila Olímpia" },
+  { value: "Berrini", label: "Berrini" },
+  { value: "Morumbi", label: "Morumbi" },
+  { value: "Granja Julieta", label: "Granja Julieta" },
+  { value: "Santo Amaro", label: "Santo Amaro" },
+  { value: "Socorro", label: "Socorro" },
+  { value: "Jurubatuba", label: "Jurubatuba" },
+  { value: "Autódromo", label: "Autódromo" },
+  { value: "Interlagos", label: "Interlagos" },
+  { value: "Grajaú", label: "Grajaú" },
+  { value: "Brás", label: "Brás" },
+  { value: "Juventus Mooca", label: "Juventus Mooca" },
+  { value: "Ipiranga", label: "Ipiranga" },
+  { value: "Tamanduateí", label: "Tamanduateí" },
+  { value: "São Caetano do Sul", label: "São Caetano do Sul" },
+  { value: "Utinga", label: "Utinga" },
+  { value: "Pref Saladino", label: "Pref Saladino" },
+  { value: "Capuava", label: "Capuava" },
+  { value: "Mauá", label: "Mauá" },
+  { value: "Guapituba", label: "Guapituba" },
+  { value: "Ribeirão Pires", label: "Ribeirão Pires" },
+  { value: "Rio Grande da Serra", label: "Rio Grande da Serra" },
+  { value: "Brás", label: "Brás" },
+  { value: "Juventus Mooca", label: "Juventus Mooca" },
+  { value: "Ipiranga", label: "Ipiranga" },
+  { value: "Tamanduateí", label: "Tamanduateí" },
+  { value: "São Caetano do Sul", label: "São Caetano do Sul" },
+  { value: "Utinga", label: "Utinga" },
+  { value: "Pref Saladino", label: "Pref Saladino" },
+  { value: "Capuava", label: "Capuava" },
+  { value: "Mauá", label: "Mauá" },
+  { value: "Guapituba", label: "Guapituba" },
+  { value: "Ribeirão Pires", label: "Ribeirão Pires" },
+  { value: "Rio Grande da Serra", label: "Rio Grande da Serra" },
+  { value: "Brás", label: "Brás" },
+  { value: "Tatuapé", label: "Tatuapé" },
+  { value: "Engº Goulart", label: "Engº Goulart" },
+  { value: "Usp Leste", label: "Usp Leste" },
+  { value: "Comendador Ermelino", label: "Comendador Ermelino" },
+  { value: "São Miguel Paulista", label: "São Miguel Paulista" },
+  { value: "Jardim Helena Vila Mara", label: "Jardim Helena Vila Mara" },
+  { value: "Itaim Paulista", label: "Itaim Paulista" },
+  { value: "Jardim Romano", label: "Jardim Romano" },
+  { value: "Eng Manoel Feio", label: "Eng Manoel Feio" },
+  { value: "Itaquaquecetuba", label: "Itaquaquecetuba" },
+  { value: "Aracaré", label: "Aracaré" },
+  { value: "Calmon Viana", label: "Calmon Viana" },
+  { value: "Aeroporto-Guarulhos", label: "Aeroporto-Guarulhos" },
+  { value: "Guarulhos-Cecap", label: "Guarulhos-Cecap" },
+  { value: "Eng. Goulart", label: "Eng. Goulart" },
+  { value: "Vila Prudente", label: "Vila Prudente" },
+  { value: "Oratório", label: "Oratório" },
+  { value: "São Lucas", label: "São Lucas" },
+  { value: "Camilo Haddad", label: "Camilo Haddad" },
+  { value: "Vila Tolstói", label: "Vila Tolstói" },
+  { value: "Vila União", label: "Vila União" },
+  { value: "Jardim Planalto", label: "Jardim Planalto" },
+  { value: "Sapopemba", label: "Sapopemba" },
+  { value: "Fazenda da Juta", label: "Fazenda da Juta" },
+  { value: "São Mateus", label: "São Mateus" },
+  { value: "Jardim Colonial", label: "Jardim Colonial" },
+  { value: "Sem informação", label: "Sem essa informação" }
 ];
 
 
@@ -303,21 +222,6 @@ const Step6Page = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
 
-  function organizarEstacoesPorLinha(opcoesEstacoesMetro) {
-    const estacoesPorLinha = {};
-  
-    opcoesEstacoesMetro.forEach(estacao => {
-      const linha = estacao.label.split(' - ')[0]; // Obtém o nome da linha a partir do label da estação
-      if (!estacoesPorLinha[linha]) {
-        estacoesPorLinha[linha] = [];
-      }
-      estacoesPorLinha[linha].push(estacao.value);
-    });
-  
-    return estacoesPorLinha;
-  }
-  
-  const estacoesOrganizadas = organizarEstacoesPorLinha(opcoesEstacoesMetro);
 
   const validateFields = () => {
     let newErrors = {};
@@ -373,34 +277,30 @@ const Step6Page = () => {
           <Form.Group controlId="linhasMetro">
             <Form.Label>Linhas de Metro</Form.Label>
             <Select
-              name="linhasMetro"
-              options={opcoesLinhasMetro}
-              value={opcoesLinhasMetro.find(option => option.value === formData.linhasMetro)}
-              onChange={handleChangeSelect}
-              className={errors.linhasMetro ? 'is-invalid' : ''}
+              options={opcoesLinhasMetro} // Certifique-se de que este está definido corretamente
+              value={opcoesLinhasMetro.filter(opcao => formData.linhasMetro.includes(opcao.value))}
+              onChange={options => setFormData({ ...formData, linhasMetro: options.map(option => option.value) })}
+              isMulti
+              isLoading
+              isInvalid={!!errors.linhasMetro}
             />
-            {errors.linhasMetro && (
-              <div className="text-danger">{errors.linhasMetro}</div>
-            )}
+            {/* Feedback de validação customizado, como mostrado acima */}
+            {errors.linhasMetro && <div className="text-danger">{errors.linhasMetro}</div>}
           </Form.Group>
 
           <Form.Group controlId="estacoesMetro">
-            <Form.Label>Estações de Metro</Form.Label>
-            <Select
-              name="estacoesMetro"
-              options={estacoesOrganizadas}
-              value={opcoesEstacoesMetro.find(option => option.station === formData.estacoesMetro)}
-              onChange={(selectedOption) => {
-                // Você pode acessar a opção selecionada usando selectedOption
-                // Por exemplo, selectedOption.value ou selectedOption.label
-                handleChangeSelect(selectedOption.value); // Certifique-se de que esta função trata o valor corretamente
-              }}
-              className={errors.estacoesMetro ? 'is-invalid' : ''}
-            />
-            {errors.estacoesMetro && (
-              <div className="text-danger">{errors.estacoesMetro}</div>
-            )}
-          </Form.Group>
+          <Form.Label>Estacoes de Metro</Form.Label>
+          <Select
+            options={opcoesestacoesMetro} // Certifique-se de que este está definido corretamente
+            value={opcoesestacoesMetro.filter(opcao => formData.estacoesMetro.includes(opcao.value))}
+            onChange={options => setFormData({ ...formData, estacoesMetro: options.map(option => option.value) })}
+            isMulti
+            isLoading
+            isInvalid={!!errors.estacoesMetro}
+          />
+          {/* Feedback de validação customizado, como mostrado acima */}
+          {errors.estacoesMetro && <div className="text-danger">{errors.estacoesMetro}</div>}
+        </Form.Group>
 
 
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
@@ -410,15 +310,19 @@ const Step6Page = () => {
       </Form>
     </div>
   
-      <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Erros de Validação</Modal.Title>
+    <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
+        <Modal.Header>
+          <Modal.Title>Preenchimento obrigatório</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {errorMessages.map((message, index) => <p key={index}>{message}</p>)}
+          {errorMessages.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>Fechar</Button>
+          <Button variant="secondary" onClick={() => setShowErrorModal(false)}>
+            Fechar
+          </Button>
         </Modal.Footer>
       </Modal>
   </>
