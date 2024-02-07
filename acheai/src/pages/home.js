@@ -39,7 +39,7 @@ export default function Home() {
             height={200} // Altura da imagem
             objectFit="contain" // Esta propriedade é opcional, ajusta como a imagem se encaixa na caixa delimitadora
           />
-          <h2 id="manchete" className="h2-titulo">Onde você quer ir hoje?</h2>
+          <h2 id="manchete" className="h2-titulo">Onde você quer ir hooje?</h2>
           <p className="p-titulo">O melhor da gastronomia e entretenimento em um só lugar.</p>
           <Link href="/estabelecimentos"><p className="b-titulo">Encontrar</p></Link>
         </div>

@@ -11,7 +11,7 @@ const Step1Page = () => {
       <title>Cadastro - AcheAi</title>
     </Head>
     <div className='formulario-cadastro'>
-      <h1>Passo 1: Termos e Condições</h1>
+      <h1>Passo 1: Termos e Condiações</h1>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5px' }}>
         <button className="btn mt-3" onClick={handlePreviousStep}>Anterior</button>
         <button className="btn mt-3" onClick={handleNextStep}>Próximo</button>
