@@ -4,9 +4,11 @@ import { router } from './routers/main';
 
 function App() {
   return (
-    <Provider>
-      <RouterProvider router={router} />
-    </Provider>
+    <>
+      <Provider>
+        <RouterProvider router={router} />
+      </Provider>
+    </>
   );
 }
 
