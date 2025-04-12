@@ -1,5 +1,5 @@
 export * from './Tooltip';
-export * from './Input';
+export * from './Flex';
 export * from './Button';
 export * from './Label';
 export * from './ProgressBar';

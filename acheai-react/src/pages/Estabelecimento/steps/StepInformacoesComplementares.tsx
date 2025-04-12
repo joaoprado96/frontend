@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { InputField } from '@/components/organisms/molecules/InputField';
 import { SelectableButton } from '@/components/organisms/atoms/SelectableButton';
 import { Button } from '@/components/organisms/atoms/Button';
-import { Input, Label } from '@/components/organisms/atoms';
+import { Input } from '@/components/organisms/atoms/Input';
+import { Label } from '@/components/organisms/atoms';
 
 type Props = {
     onNext: () => void;
@@ -77,11 +78,11 @@ export function StepInformacoesComplementares({ onNext, onBack }: Props) {
             {/* Estação de metrô / valor médio */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <Label htmlFor="metro">Qual estação de metrô é mais próxima?<span className="text-sm font-normal text-gray-500">(opcional)</span></Label>
-                <Input id="metro" placeholder="" />
+                <Input id="metro"  />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <Label htmlFor="metro">Qual valor médio do estabelecimento?<span className="text-sm font-normal text-gray-500">(opcional)</span></Label>
-                <Input id="valor" placeholder="" />
+                <Input id="valor" />
             </div>
 
             {/* Oferece */}

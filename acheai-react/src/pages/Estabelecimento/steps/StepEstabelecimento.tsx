@@ -1,17 +1,53 @@
 import { Button } from "@/components/organisms/atoms";
 import { SelectableButton } from "@/components/organisms/atoms/SelectableButton";
 import { InputField } from "@/components/organisms/molecules";
-import { useState } from "react";
+import { MaskConfig } from "@/types";
+import { useEffect, useState } from "react";
+import { UseFormReturn } from "react-hook-form";
+import { z } from 'zod';
+
+const tiposEstabelecimento = ['RESTAURANTE', 'CAFÉ', 'BAR E DRINKS', 'CASA NOTURNA'] as const;
+
+export const schema = z.object({
+    nomeEstabelecimento: z.string().min(1, { message: 'Nome do estabelecimento é obrigatório' }),
+    cnpj: z.string().refine(
+        (val) => val.replace(/\D/g, '').length === 14,
+        { message: 'CNPJ deve ter 14 dígitos' }
+    ),
+    tipoEstabelecimento: z.enum(tiposEstabelecimento, {
+        errorMap: () => ({ message: 'Selecione um tipo de estabelecimento' })
+    }),
+});
+
+export type StepEstabelecimentoFieldValues = z.infer<typeof schema>;
 
 type Props = {
     onNext: () => void;
+    form: UseFormReturn<StepEstabelecimentoFieldValues, any, StepEstabelecimentoFieldValues>;
 };
 
-export function StepEstabelecimento({ onNext }: Props) {
+export function StepEstabelecimento(props: Props) {
     const [tipo, setTipo] = useState('RESTAURANTE');
-    const tiposEstabelecimento = ['RESTAURANTE', 'CAFÉ', 'BAR E DRINKS', 'CASA NOTURNA'];
     const tiposComida = ['Indiana', 'Japonesa', 'Padaria'];
+    const tipoSelecionado = props.form.watch("tipoEstabelecimento");
 
+    const maskConfig: MaskConfig = {
+        mask: '00.000.000/0000-00'
+    };
+
+    const onNext = () => {
+        const schemaValidationResult = schema.safeParse(props.form.getValues());
+        if (schemaValidationResult.success !== true) {
+            schemaValidationResult.error.issues.forEach((issue) => {
+                props.form.setError(issue.path[0] as keyof StepEstabelecimentoFieldValues, {
+                    message: issue.message
+                });
+            });
+            console.log('Erro de validação:', schemaValidationResult);
+            return;
+        }
+        props.onNext();
+    };
 
     return (
         <>
@@ -20,14 +56,26 @@ export function StepEstabelecimento({ onNext }: Props) {
                 <h2 className="text-xl font-bold text-center text-purple-700 mb-6">
                     Informações do Estabelecimento
                 </h2>
-
                 {/* Nome e CNPJ*/}
                 <div className="flex flex-row gap-4 mb-4">
                     <div className="flex-1">
-                        <InputField id="nome" label="Nome do estabelecimento" />
+                        <InputField
+                            id="nomeEstabelecimento"
+                            status={props.form.formState.errors['nomeEstabelecimento'] ? "error" : "none"}
+                            {...props.form.register("nomeEstabelecimento")}
+                            message={props.form.formState.errors['nomeEstabelecimento']?.message}
+                            label="Nome do estabelecimento"
+                        />
+
                     </div>
                     <div className="flex-1">
-                        <InputField id="cnpj" label="CNPJ" />
+                        <InputField
+                            id="cnpj"
+                            label="CNPJ"
+                            status={props.form.formState.errors['cnpj'] ? "error" : "none"}
+                            {...props.form.register("cnpj")}
+                            message={props.form.formState.errors['cnpj']?.message}
+                            maskConfig={maskConfig} />
                     </div>
                 </div>
 
@@ -39,8 +87,8 @@ export function StepEstabelecimento({ onNext }: Props) {
                             <SelectableButton
                                 key={item}
                                 label={item}
-                                selected={tipo === item}
-                                onClick={() => setTipo(item)}
+                                selected={tipoSelecionado === item}
+                                onClick={() => props.form.setValue("tipoEstabelecimento", item)}
                                 rounded="full"
                             />
                         ))}
@@ -58,8 +106,7 @@ export function StepEstabelecimento({ onNext }: Props) {
                         {tiposComida.map((tag) => (
                             <span
                                 key={tag}
-                                className="px-3 py-1 text-sm border border-gray-300 rounded-full bg-gray-100 text-gray-800"
-                            >
+                                className="px-3 py-1 text-sm border border-gray-300 rounded-full bg-gray-100 text-gray-800">
                                 {tag}
                             </span>
                         ))}

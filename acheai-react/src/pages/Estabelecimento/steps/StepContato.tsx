@@ -2,7 +2,8 @@ import { InputField } from '@/components/organisms/molecules/InputField';
 import { Button } from '@/components/organisms/atoms/Button';
 import { useRef, useState } from 'react';
 import { SelectableButton } from '@/components/organisms/atoms/SelectableButton';
-import { Input } from '@/components/organisms/atoms';
+import { Input } from '@/components/organisms/atoms/Input';
+import { HorarioFuncionamentoForm } from './HorarioFuncionamento';
 
 type Props = {
   onNext: () => void;
@@ -15,13 +16,14 @@ export function StepContato({ onNext, onBack }: Props) {
   const [open24h, setOpen24h] = useState(false);
   const diasSemana = ['Dom.', 'Seg.', 'Ter.', 'Qua.', 'Qui.', 'Sex.', 'Sab.'];
 
-  function toggleDia(dia: string) {
+  const toggleDia = (dia: string) => {
     setDiasSelecionados((prev) =>
       prev.includes(dia)
-        ? prev.filter((d) => d !== dia)
-        : [...prev, dia]
+        ? prev.filter((d) => d !== dia) // desmarca
+        : [...prev, dia]               // marca
     );
-  }
+  };
+
 
   return (
     <div className="p-6 bg-white max-w-5xl mx-auto">
@@ -42,28 +44,7 @@ export function StepContato({ onNext, onBack }: Props) {
       {/* Horário de funcionamento */}
       <div className="mt-6">
         <p className="font-semibold text-gray-800 mb-2">Horário de funcionamento</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {diasSemana.map((item) => (
-            <SelectableButton
-              key={item}
-              label={item}
-              selected={diasSelecionados.includes(item)}
-              onClick={() => toggleDia(item)}
-              rounded='full'
-            />
-          ))}
-        </div>
-
-        {/* Checkbox "Aberto 24 horas" */}
-        <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
-          <input
-            type="checkbox"
-            checked={open24h}
-            onChange={(e) => setOpen24h(e.target.checked)}
-            className="w-4 h-4"
-          />
-          Aberto 24 horas
-        </label>
+        <HorarioFuncionamentoForm onSubmit={(data) => console.log(data)} />
       </div>
 
       {/* Upload de fotos */}
@@ -78,7 +59,6 @@ export function StepContato({ onNext, onBack }: Props) {
             <Input
               ref={fileRef}
               type="file"
-              unstyled
               multiple
               className="hidden"
             />

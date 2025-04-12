@@ -1,30 +1,30 @@
+import { forwardRef } from 'react';
 import { Input } from '../atoms/Input';
 import { Label } from '../atoms/Label';
+import { InputProps } from '../atoms/Input/Input';
 
 type InputFieldProps = {
   id: string;
   label: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-};
+} & React.InputHTMLAttributes<HTMLInputElement> & InputProps;
 
-export const InputField = ({
+export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(({
   id,
   label,
-  value,
-  onChange,
+  message,
   placeholder,
-}: InputFieldProps) => {
+  ...props
+}, ref) => {
   return (
     <div className="flex flex-col w-full">
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
+        ref={ref}
+        message={message}
+        {...props}
       />
     </div>
   );
-};
+})
+
