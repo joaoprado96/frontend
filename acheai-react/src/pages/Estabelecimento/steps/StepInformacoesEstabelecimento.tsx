@@ -8,7 +8,7 @@ import { z } from 'zod';
 
 const tiposEstabelecimento = ['RESTAURANTE', 'CAFÉ', 'BAR E DRINKS', 'CASA NOTURNA'] as const;
 
-export const schema = z.object({
+export const schemaInformacoesEstabelecimento = z.object({
     nomeEstabelecimento: z.string().min(1, { message: 'Nome do estabelecimento é obrigatório' }),
     cnpj: z.string().refine(
         (val) => val.replace(/\D/g, '').length === 14,
@@ -19,14 +19,14 @@ export const schema = z.object({
     }),
 });
 
-export type StepEstabelecimentoFieldValues = z.infer<typeof schema>;
+export type StepEstabelecimentoFieldValues = z.infer<typeof schemaInformacoesEstabelecimento>;
 
 type Props = {
     onNext: () => void;
     form: UseFormReturn<StepEstabelecimentoFieldValues, any, StepEstabelecimentoFieldValues>;
 };
 
-export function StepEstabelecimento(props: Props) {
+export function StepInformacoesEstabelecimento(props: Props) {
     const [tipo, setTipo] = useState('RESTAURANTE');
     const tiposComida = ['Indiana', 'Japonesa', 'Padaria'];
     const tipoSelecionado = props.form.watch("tipoEstabelecimento");
@@ -36,7 +36,7 @@ export function StepEstabelecimento(props: Props) {
     };
 
     const onNext = () => {
-        const schemaValidationResult = schema.safeParse(props.form.getValues());
+        const schemaValidationResult = schemaInformacoesEstabelecimento.safeParse(props.form.getValues());
         if (schemaValidationResult.success !== true) {
             schemaValidationResult.error.issues.forEach((issue) => {
                 props.form.setError(issue.path[0] as keyof StepEstabelecimentoFieldValues, {
@@ -73,6 +73,7 @@ export function StepEstabelecimento(props: Props) {
                             id="cnpj"
                             label="CNPJ"
                             status={props.form.formState.errors['cnpj'] ? "error" : "none"}
+                            variant={props.form.formState.errors['cnpj'] ? "error" : "default"}
                             {...props.form.register("cnpj")}
                             message={props.form.formState.errors['cnpj']?.message}
                             maskConfig={maskConfig} />
@@ -88,11 +89,18 @@ export function StepEstabelecimento(props: Props) {
                                 key={item}
                                 label={item}
                                 selected={tipoSelecionado === item}
-                                onClick={() => props.form.setValue("tipoEstabelecimento", item)}
+                                onClick={() =>
+                                    props.form.setValue("tipoEstabelecimento", item, {
+                                        shouldValidate: true,
+                                    })
+                                }
                                 rounded="full"
                             />
                         ))}
                     </div>
+                    <span className="text-xs pl-2 pt-1 text-red-600 text-left empty:hidden empty:opacity-0 opacity-100">
+                        {props.form.formState.errors['tipoEstabelecimento']?.message}
+                    </span>
                 </div>
 
                 {/* Tipo de local */}

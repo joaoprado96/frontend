@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { schema, StepEstabelecimento, StepEstabelecimentoFieldValues } from './steps/StepEstabelecimento';
+import { schemaInformacoesEstabelecimento, StepInformacoesEstabelecimento, StepEstabelecimentoFieldValues } from './steps/StepInformacoesEstabelecimento';
 import { StepContato } from './steps/StepContato';
 import { ProgressBar } from '@/components/organisms/atoms';
 import { StepInformacoesComplementares } from './steps/StepInformacoesComplementares';
@@ -17,7 +17,7 @@ export function CadastroEstabelecimento() {
 
     const form = useForm<ValuesFields>({
         mode: 'onBlur',
-        resolver: zodResolver(schema),
+        resolver: zodResolver(schemaInformacoesEstabelecimento),
     });
 
     const onSubmit = (data: any) => {
@@ -46,7 +46,7 @@ export function CadastroEstabelecimento() {
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 {/* Conteúdo que troca entre steps */}
                 <div className="relative min-h-[500px] transition-all duration-300 ease-in-out mt-6">
-                    {step === 1 && <StepEstabelecimento onNext={handleNext} form={form} />}
+                    {step === 1 && <StepInformacoesEstabelecimento onNext={handleNext} form={form} />}
                     {step === 2 && <StepContato onNext={handleNext} onBack={handleBack} />}
                     {step === 3 && <StepInformacoesComplementares onNext={handleNext} onBack={handleBack} />}
                 </div>

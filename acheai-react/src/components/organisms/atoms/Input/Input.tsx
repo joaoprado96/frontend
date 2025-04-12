@@ -14,7 +14,7 @@ import { Container } from './Container';
 import { Label } from './Label';
 
 const inputVariants = tv({
-  base: 'border font-semibold transition',
+  base: 'border border-black font-semibold transition',
   variants: {
     status: {
       none: `
@@ -62,7 +62,7 @@ const inputVariants = tv({
       false: 'bg-white text-gray-700 border-gray-300 hover:border-gray-500',
     },
     variant: {
-      default: 'border-black',
+      default: '',
       gray: 'border-gray-300 text-gray-800',
       error: 'border-red-500 text-red-600',
     },
