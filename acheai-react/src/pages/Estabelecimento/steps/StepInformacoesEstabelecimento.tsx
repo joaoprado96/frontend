@@ -1,25 +1,16 @@
 import { Button } from "@/components/organisms/atoms";
 import { SelectableButton } from "@/components/organisms/atoms/SelectableButton";
 import { InputField } from "@/components/organisms/molecules";
+import { ViacepAPI } from "@/services/viacep/viacep.service";
 import { MaskConfig } from "@/types";
 import { useEffect, useState } from "react";
 import { UseFormReturn } from "react-hook-form";
-import { z } from 'zod';
-
-const tiposEstabelecimento = ['RESTAURANTE', 'CAFÉ', 'BAR E DRINKS', 'CASA NOTURNA'] as const;
-
-export const schemaInformacoesEstabelecimento = z.object({
-    nomeEstabelecimento: z.string().min(1, { message: 'Nome do estabelecimento é obrigatório' }),
-    cnpj: z.string().refine(
-        (val) => val.replace(/\D/g, '').length === 14,
-        { message: 'CNPJ deve ter 14 dígitos' }
-    ),
-    tipoEstabelecimento: z.enum(tiposEstabelecimento, {
-        errorMap: () => ({ message: 'Selecione um tipo de estabelecimento' })
-    }),
-});
-
-export type StepEstabelecimentoFieldValues = z.infer<typeof schemaInformacoesEstabelecimento>;
+import { z } from "zod";
+import {
+    schemaInformacoesEstabelecimento,
+    StepEstabelecimentoFieldValues,
+    tiposEstabelecimento,
+  } from "@/pages/Estabelecimento/steps/schemas/schemaInformacoesEstabelecimento";
 
 type Props = {
     onNext: () => void;
@@ -31,8 +22,12 @@ export function StepInformacoesEstabelecimento(props: Props) {
     const tiposComida = ['Indiana', 'Japonesa', 'Padaria'];
     const tipoSelecionado = props.form.watch("tipoEstabelecimento");
 
-    const maskConfig: MaskConfig = {
+    const cnpjMaskConfig: MaskConfig = {
         mask: '00.000.000/0000-00'
+    };
+
+    const cepMaskConfig: MaskConfig = {
+        mask: '00000-000'
     };
 
     const onNext = () => {
@@ -47,7 +42,29 @@ export function StepInformacoesEstabelecimento(props: Props) {
             return;
         }
         props.onNext();
-    };
+    }; 
+
+    const getAddress = async (cep: string) => {
+        const data = await ViacepAPI.getCep(cep.replace('-', ''));
+        props.form.setValue('endereco', data.logradouro);
+        props.form.setValue('bairro', data.bairro);
+        props.form.setValue('cidade', data.localidade);
+        props.form.setValue('estado', data.uf);
+    }
+    props.form.register('cep', {
+        onChange: async (event: React.ChangeEvent<HTMLInputElement>) => {
+            const cep = event.target.value;
+
+            if (cep.length === 9) {
+                const data = await ViacepAPI.getCep(cep.replace('-', ''));
+
+                props.form.setValue('endereco', data.logradouro);
+                props.form.setValue('bairro', data.bairro);
+                props.form.setValue('cidade', data.localidade);
+                props.form.setValue('estado', data.uf);
+            }
+        },
+    });
 
     return (
         <>
@@ -62,21 +79,23 @@ export function StepInformacoesEstabelecimento(props: Props) {
                         <InputField
                             id="nomeEstabelecimento"
                             status={props.form.formState.errors['nomeEstabelecimento'] ? "error" : "none"}
+                            variant={props.form.formState.errors['nomeEstabelecimento'] ? "error" : "default"}
                             {...props.form.register("nomeEstabelecimento")}
                             message={props.form.formState.errors['nomeEstabelecimento']?.message}
-                            label="Nome do estabelecimento"
+                            label="Nome do estabelecimento*"
                         />
 
                     </div>
                     <div className="flex-1">
                         <InputField
                             id="cnpj"
-                            label="CNPJ"
+                            label="CNPJ*"
+                            placeholder="00.000.000/0000-00"
                             status={props.form.formState.errors['cnpj'] ? "error" : "none"}
                             variant={props.form.formState.errors['cnpj'] ? "error" : "default"}
                             {...props.form.register("cnpj")}
                             message={props.form.formState.errors['cnpj']?.message}
-                            maskConfig={maskConfig} />
+                            maskConfig={cnpjMaskConfig} />
                     </div>
                 </div>
 
@@ -122,23 +141,62 @@ export function StepInformacoesEstabelecimento(props: Props) {
                 </div>
 
                 {/* Endereço do estabelecimento */}
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">Endereço do estabelecimento:</label>
-                    <InputField id="cep" label="Informe o CEP" />
+                <div className="flex flex-col gap-4">
+                    {/* CEP + Endereço */}
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <InputField
+                            id="cep"
+                            label="Informe o CEP"
+                            maskConfig={cepMaskConfig}
+                            {...props.form.register("cep", {
+                                onChange: async (e) => {
+                                    props.form.setValue("cep", e.target.value); // OU chame o field.onChange se estiver desestruturando
+
+                                    if (e.target.value.length === 9) {
+                                        await getAddress(e.target.value);
+                                    }
+                                },
+                            })} 
+                            containerClassName="w-full md:w-80"
+                        />
+                        <InputField
+                            id="endereco"
+                            {...props.form.register("endereco")}
+                            label="Endereço"
+                            containerClassName="w-full"
+                        />
+                    </div>
+
+                    {/* Bairro, Cidade, Estado, Número */}
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <InputField
+                            id="bairro"
+                            {...props.form.register("bairro")}
+                            label="Bairro"
+                            containerClassName="flex-1 "
+                        />
+                        <InputField
+                            id="cidade"
+                            {...props.form.register("cidade")}
+                            label="Cidade"
+                            containerClassName="flex-1 min-w-[120px]"
+                        />
+                        <InputField
+                            id="estado"
+                            {...props.form.register("estado")}
+                            label="Estado"
+                            containerClassName="w-full md:w-36"
+                        />
+                        <InputField
+                            id="numero"
+                            {...props.form.register("numero")}
+                            label="Número"
+                            message={props.form.formState.errors['numero']?.message}
+                            containerClassName="w-full md:w-40"
+                        />
+                    </div>
                 </div>
 
-                <div className="flex gap-4 mb-4">
-                    <div className="flex-1">
-                        <InputField id="endereco" label="Inserir endereço manualmente" />
-                    </div>
-                    <div className="w-[120px]">
-                        <InputField id="numero" label="Número" />
-                    </div>
-                </div>
-
-                <div>
-                    <InputField id="pais" label="País" />
-                </div>
 
                 <div className="flex justify-between mt-6">
                     <Button onClick={onNext}>Próximo</Button>

@@ -179,7 +179,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={inputVariants({ ...props, status, hasUnit, rounded })
               .trim()
               .replace(/\s+/g, ' ')}
-            placeholder=" "
             ref={inputRef}
           />
 

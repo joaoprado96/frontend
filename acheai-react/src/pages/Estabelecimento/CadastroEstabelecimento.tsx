@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { schemaInformacoesEstabelecimento, StepInformacoesEstabelecimento, StepEstabelecimentoFieldValues } from './steps/StepInformacoesEstabelecimento';
+import {
+    schemaInformacoesEstabelecimento,
+    StepEstabelecimentoFieldValues
+} from "@/pages/Estabelecimento/steps/schemas/schemaInformacoesEstabelecimento";
 import { StepContato } from './steps/StepContato';
 import { ProgressBar } from '@/components/organisms/atoms';
 import { StepInformacoesComplementares } from './steps/StepInformacoesComplementares';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
+import { StepInformacoesEstabelecimento } from './steps/StepInformacoesEstabelecimento';
 
 export function CadastroEstabelecimento() {
 
